@@ -40,6 +40,16 @@ public class EspressoTestDemoCustomView {
 	public void setUp() {
 		testView = rule.getActivity().getTestView();
 		testViewEspresso = EspressoHelper.viewToViewInteraction(testView);
+
+		/*
+		 * NOTE: The above method only works when there is one view being converted. If that
+		 * isn't the case, an alternative method needs to be used as follows:
+		 *
+		 * 		testViewEspresso1 = EspressoHelper.viewToViewInteraction(testView1, "1");
+		 * 		testViewEspresso2 = EspressoHelper.viewToViewInteraction(testView2, "foo");
+		 * 		testViewEspresso3 = EspressoHelper.viewToViewInteraction(testView3, "some other " +
+		 * 			"unique ID");
+		 */
 	}
 
 	@Test
