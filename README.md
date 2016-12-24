@@ -9,4 +9,9 @@ A test harness is an Activity which displays a view along with a series of contr
 The [EspressoHelper](library/src/main/java/com/matthewtamlin/android_testing_tools/library/EspressoHelper.java) class provides static methods for converting View objects to ViewInteractor objects. This is useful when a View needs to be used with the Espresso framework, but it is only obtainable as a direct View object. The [sample](sample/src/androidTest/java/com/matthewtamlin/android_testing_tools/sample/EspressoTestDemoCustomView.java) contains an example of the EspressoHelper in use.
 
 ## Compatibility
-This library is compatible with Android 12 and up.
+This library is compatible with Android 12 and up. Android lint may warn about an InvalidPackage exception, however that shouldn't matter if the library is only used in testing. The warning can be suppressed by adding the following to the android scope in the relevant build.gradle file:
+```
+lintOptions {
+	disable 'InvalidPackage'
+}
+ ```
