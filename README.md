@@ -6,7 +6,7 @@ A test harness is an Activity which displays a view along with a series of contr
 
 
 ## EspressoHelper
-The [EspressoHelper](library/src/main/com/matthewtamlin/android_testing_tools/library/EspressoHelper.java) class provides static methods for converting View objects to ViewInteractor objects. This is useful when a View needs to be used with the Espresso framework, but it is only obtainable as a direct View object. The [sample] contains an example of the EspressoHelper in use.
+The [EspressoHelper](library/src/main/com/matthewtamlin/android_testing_tools/library/EspressoHelper.java) class provides static methods for converting View objects to ViewInteractor objects. This is useful when a View needs to be used with the Espresso framework, but it is only obtainable as a direct View object. The [sample](sample/src/java/com/matthewtamlin/android_testing_tools/sample/EspressoTestDemoCustomView.java) contains an example of the EspressoHelper in use.
 
 ## Compatibility
 This library is compatible with Android 12 and up.
