@@ -1,11 +1,12 @@
 # AndroidTestingTools
-A library of tools to make Android testing easier. Releases are made available through jCentre. Add `compile 'com.matthew-tamlin:android-testing-tools:1.0.0'` to your gradle build file to use the latest version. Older versions are available in the [maven repo](https://bintray.com/matthewtamlin/maven/AndroidTestingTools).
+A library of tools to make Android testing easier. The library current consists of a set of activities called test harnesses, and a static helper class. Releases are made available through jCentre. Add `compile 'com.matthew-tamlin:android-testing-tools:1.0.0'` to your gradle build file to use the latest version. Older versions are available in the [maven repo](https://bintray.com/matthewtamlin/maven/AndroidTestingTools).
 
 ## Test Harnesses
-A test harness is an Activity which hosts a test view and a set of controls. This allows a user to directly interact with a view/layout, which is especially useful when designing custom UI components. Furthermore, a test harness can be used as an ActivityTestRule in an instrumented test to allow unit testing of custom UI components. This library provides an abstract base test harness, and a few implementations. The implementations allow the controls to be positioned above, below and on top of the test view.
+A test harness is an Activity which displays a view along with a series of controls. While the user can interact with the view as they normally would, they can also use the controls to invoke the methods of the view directly. This can be used to easily and quickly test the look, feel and performance of a custom UI component. Test harnesses can also be used to unit test custom views. By declaring a test harness as an ActivityTestRule in an instrumented test class, the test cases can get a direct reference to the view under test. Coupled with the EspressoHelper class, the view can then be used with the Espresso framework. This library provides an abstract TestHarness class, as well as several subclasses which vary the layout of the activity. The [sample] contains an example of a test harness in use.
+
 
 ## EspressoHelper
-The EspressoHelper class provides a static method for converting direct View references to Espresso ViewInterators. This is useful when a View needs to be used with the Espresso framework, but it is only obtainable as a direct View object.
+The [EspressoHelper class provides static methods for converting View objects to ViewInterator objects. This is useful when a View needs to be used with the Espresso framework, but it is only obtainable as a direct View object. The [sample] contains an example of the EspressoHelper in use.
 
 ## Compatibility
 This library is compatible with Android 12 and up.
