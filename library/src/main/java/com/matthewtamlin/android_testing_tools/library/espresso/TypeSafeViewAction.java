@@ -25,7 +25,7 @@ public abstract class TypeSafeViewAction<T extends View> implements ViewAction {
 	/**
 	 * The class this action can be applied to.
 	 */
-	private final Class<T> clazz;
+	private final Class<T> targetClass;
 
 	/**
 	 * Whether or not this action can also be applied to subclasses of the target class.
@@ -45,7 +45,7 @@ public abstract class TypeSafeViewAction<T extends View> implements ViewAction {
 	 * 		if {@code allowSubclasses} is null
 	 */
 	public TypeSafeViewAction(final Class<T> targetClass, final boolean allowSubclasses) {
-		this.clazz = checkNotNull(targetClass, "clazz cannot be null.");
+		this.targetClass = checkNotNull(targetClass, "targetClass cannot be null.");
 		this.allowSubclasses = allowSubclasses;
 	}
 
@@ -53,7 +53,7 @@ public abstract class TypeSafeViewAction<T extends View> implements ViewAction {
 	 * @return the class this view action can be applied to, not null
 	 */
 	public Class<T> getTargetClass() {
-		return clazz;
+		return targetClass;
 	}
 
 	/**
@@ -66,9 +66,9 @@ public abstract class TypeSafeViewAction<T extends View> implements ViewAction {
 	@Override
 	public Matcher<View> getConstraints() {
 		if (allowSubclasses) {
-			return isAssignableFrom(clazz);
+			return isAssignableFrom(targetClass);
 		} else {
-			return isExactType(clazz);
+			return isExactType(targetClass);
 		}
 	}
 
