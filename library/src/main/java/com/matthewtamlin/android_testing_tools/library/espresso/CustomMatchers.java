@@ -4,6 +4,9 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
+/**
+ * Custom Hamcrest matchers. Matchers are created by calling the static methods.
+ */
 public class CustomMatchers {
 	/**
 	 * Creates a new matcher that matches objects which are an instance of the provided class.
