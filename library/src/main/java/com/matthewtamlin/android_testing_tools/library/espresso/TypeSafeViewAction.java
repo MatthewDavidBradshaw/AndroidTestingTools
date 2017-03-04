@@ -73,7 +73,7 @@ public abstract class TypeSafeViewAction<T extends View> implements ViewAction {
 	@Override
 	public void perform(final UiController uiController, final View view) {
 		if (!getConstraints().matches(view)) {
-			throw new RuntimeException("View supplied to perform did not satisfy getConstraints.");
+			throw new RuntimeException("view must be an instance of " + targetClass.getName());
 		}
 
 		//noinspection unchecked - This is prevented by the above check
