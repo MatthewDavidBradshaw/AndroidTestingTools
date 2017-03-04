@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.matthewtamlin.android_testing_tools.testing;
+package com.matthewtamlin.android_testing_tools.testing.espresso;
 
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.ViewAssertion;
@@ -24,7 +24,8 @@ import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 import android.widget.TextView;
 
-import com.matthewtamlin.android_testing_tools.library.EspressoHelper;
+import com.matthewtamlin.android_testing_tools.library.espresso.EspressoHelper;
+import com.matthewtamlin.android_testing_tools.testing.EspressoHelperTestHarness;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -32,7 +33,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static com.matthewtamlin.android_testing_tools.library.EspressoHelper.viewToViewInteraction;
+import static com.matthewtamlin.android_testing_tools.library.espresso.EspressoHelper.viewToViewInteraction;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
