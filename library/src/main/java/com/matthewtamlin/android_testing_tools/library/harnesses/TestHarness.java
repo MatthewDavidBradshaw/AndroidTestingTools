@@ -48,4 +48,9 @@ public abstract class TestHarness<V, C> extends AppCompatActivity {
 	 * @return the view which contains the test view
 	 */
 	public abstract C getTestViewContainer();
+
+	/**
+	 * Entirely disables the controls and hides them from the view.
+	 */
+	public abstract void disableControls();
 }
