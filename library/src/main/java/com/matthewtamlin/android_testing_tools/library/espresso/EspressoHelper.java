@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.matthewtamlin.android_testing_tools.library;
+package com.matthewtamlin.android_testing_tools.library.espresso;
 
 
 import android.support.test.espresso.ViewInteraction;

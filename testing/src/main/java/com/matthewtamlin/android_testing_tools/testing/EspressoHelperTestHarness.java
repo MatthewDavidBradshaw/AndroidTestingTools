@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.matthewtamlin.android_testing_tools.library.ControlsOverViewTestHarness;
-import com.matthewtamlin.android_testing_tools.library.EspressoHelper;
+import com.matthewtamlin.android_testing_tools.library.espresso.EspressoHelper;
 
 import static android.widget.LinearLayout.VERTICAL;
 

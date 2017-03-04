@@ -3,9 +3,8 @@ package com.matthewtamlin.android_testing_tools.sample;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.widget.TextView;
 
-import com.matthewtamlin.android_testing_tools.library.EspressoHelper;
+import com.matthewtamlin.android_testing_tools.library.espresso.EspressoHelper;
 
 import org.junit.Before;
 import org.junit.Rule;
