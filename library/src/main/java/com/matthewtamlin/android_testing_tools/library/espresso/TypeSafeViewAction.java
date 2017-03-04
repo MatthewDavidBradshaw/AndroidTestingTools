@@ -41,8 +41,6 @@ public abstract class TypeSafeViewAction<T extends View> implements ViewAction {
 	 * 		whether or not this action can also be applied to subclasses of the target class
 	 * @throws IllegalArgumentException
 	 * 		if {@code targetClass} is null
-	 * @throws IllegalArgumentException
-	 * 		if {@code allowSubclasses} is null
 	 */
 	public TypeSafeViewAction(final Class<T> targetClass, final boolean allowSubclasses) {
 		this.targetClass = checkNotNull(targetClass, "targetClass cannot be null.");
