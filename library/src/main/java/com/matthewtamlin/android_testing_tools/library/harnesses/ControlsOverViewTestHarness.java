@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.matthewtamlin.android_testing_tools.library;
+package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,6 +22,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import com.matthewtamlin.android_testing_tools.library.R;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
