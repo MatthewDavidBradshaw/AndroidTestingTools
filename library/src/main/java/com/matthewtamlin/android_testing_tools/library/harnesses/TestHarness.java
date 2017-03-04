@@ -50,7 +50,11 @@ public abstract class TestHarness<V, C> extends AppCompatActivity {
 	public abstract C getTestViewContainer();
 
 	/**
-	 * Entirely disables the controls and hides them from the view.
+	 * Allows the controls to be entirely hidden and disabled. This includes the button for
+	 * temporarily hiding and showing the controls.
+	 *
+	 * @param enable
+	 * 		true to enable the controls, false to disable then
 	 */
-	public abstract void disableControls();
+	public abstract void enableControls(boolean enable);
 }
