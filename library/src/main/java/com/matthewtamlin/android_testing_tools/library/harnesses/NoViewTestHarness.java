@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.matthewtamlin.android_testing_tools.library;
+package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.annotation.SuppressLint;
 import android.view.View;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.matthewtamlin.android_testing_tools.library;
+package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -48,4 +48,13 @@ public abstract class TestHarness<V, C> extends AppCompatActivity {
 	 * @return the view which contains the test view
 	 */
 	public abstract C getTestViewContainer();
+
+	/**
+	 * Allows the controls to be entirely hidden and disabled. This includes the button for
+	 * temporarily hiding and showing the controls.
+	 *
+	 * @param enable
+	 * 		true to enable the controls, false to disable then
+	 */
+	public abstract void enableControls(boolean enable);
 }
