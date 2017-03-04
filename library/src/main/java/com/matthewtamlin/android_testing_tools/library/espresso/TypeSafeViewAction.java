@@ -15,7 +15,7 @@ import static com.matthewtamlin.java_utilities.checkers.NullChecker.checkNotNull
  * <p>
  * Subclasses can define the action to perform by implementing {@link #typeSafePerform(UiController,
  * View)}. If subclasses cannot avoid overriding {@link #getConstraints()} or {@link
- * #perform(UiController, View)}, the superclass implementations must be called from within the
+ * #perform(UiController, View)}, then the superclass implementations must be called from within the
  * respective overrides.
  *
  * @param <T>
