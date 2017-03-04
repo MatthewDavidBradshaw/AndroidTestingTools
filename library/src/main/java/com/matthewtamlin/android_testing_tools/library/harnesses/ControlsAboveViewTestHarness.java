@@ -75,4 +75,12 @@ public abstract class ControlsAboveViewTestHarness<V> extends TestHarness<V, Fra
 			}
 		});
 	}
+
+	@Override
+	public void enableControls(final boolean enable) {
+		final LinearLayout outerControlsContainer = (LinearLayout) findViewById(R.id
+				.controlsAboveView_outerControlContainer);
+
+		outerControlsContainer.setVisibility(enable ? VISIBLE : GONE);
+	}
 }
