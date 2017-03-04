@@ -47,9 +47,7 @@ public abstract class TypeSafeViewAssertion<T extends View> implements ViewAsser
 
 	@Override
 	public void check(final View view, final NoMatchingViewException noViewFoundException) {
-		if (view != null) {
-			checkConstraints(view);
-		}
+		checkConstraints(view);
 
 		//noinspection unchecked - This is prevented by the above check
 		typeSafeCheck((T) view, noViewFoundException);
@@ -73,7 +71,9 @@ public abstract class TypeSafeViewAssertion<T extends View> implements ViewAsser
 	 * 		the view to check
 	 */
 	private void checkConstraints(final View view) {
-		if (allowSubclasses) {
+		if (view == null) {
+			return;
+		} else if (allowSubclasses) {
 			if (!isAssignableFrom(targetClass).matches(view)) {
 				throw new RuntimeException("view must be an instance of" + targetClass.getName());
 			}
