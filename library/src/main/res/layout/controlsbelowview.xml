@@ -17,32 +17,32 @@ limitations under the License.
 -->
 
 <LinearLayout
-	android:fitsSystemWindows="false"
 	android:id="@+id/controlsBelowView_root"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:fitsSystemWindows="false"
 	android:orientation="vertical">
 
 	<FrameLayout
-		android:fitsSystemWindows="true"
 		android:id="@+id/controlsBelowView_testViewContainer"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"/>
+		android:layout_height="wrap_content"
+		android:fitsSystemWindows="true"/>
 
 	<LinearLayout
-		android:fitsSystemWindows="true"
 		android:id="@+id/controlsBelowView_outerControlsContainer"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:fitsSystemWindows="true"
 		android:orientation="vertical">
 
 		<Button
-			android:alpha="0.75"
 			android:id="@+id/controlsBelowView_hideShowControlsButton"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:alpha="0.75"
 			android:text="Hide/show controls"
 			tools:ignore="HardcodedText"/>
 
