@@ -17,29 +17,32 @@ limitations under the License.
 -->
 
 <FrameLayout
+	android:fitsSystemWindows="false"
+	android:id="@+id/controlsOverView_root"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:id="@+id/controlsOverView_root"
 	android:layout_height="match_parent">
 
 	<FrameLayout
+		android:fitsSystemWindows="true"
 		android:id="@+id/controlsOverView_testViewContainer"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"/>
 
 	<LinearLayout
+		android:fitsSystemWindows="true"
 		android:id="@+id/controlsOverView_outerControlsContainer"
-		android:orientation="vertical"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content">
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
 
 		<Button
-			android:alpha="0.75"
 			android:id="@+id/controlsOverView_showHideControlsButton"
-			android:text="Show/hide controls"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:alpha="0.75"
+			android:text="Show/hide controls"
 			tools:ignore="HardcodedText"/>
 
 		<ScrollView
