@@ -17,6 +17,9 @@
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
+import java.util.List;
 
 /**
  * An activity which hosts a view to be tested, as well as controls for interacting with the view.
@@ -57,4 +60,10 @@ public abstract class TestHarness<V, C, R, I, O> extends AppCompatActivity {
 	 * 		true to enable the controls, false to disable then
 	 */
 	public abstract void enableControls(boolean enable);
+
+	public abstract void addControl(View control);
+
+	public abstract void removeControl(View control);
+
+	public abstract List<View> getControls();
 }
