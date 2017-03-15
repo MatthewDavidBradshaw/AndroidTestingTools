@@ -17,7 +17,6 @@
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -31,12 +30,12 @@ import static android.view.View.VISIBLE;
 /**
  * A TestHarness which displays control buttons above the test view.
  *
- * @param <V>
+ * @param <T>
  * 		the type of view being tested
  */
-public abstract class ControlsAboveViewTestHarness<V> extends TestHarness<V, FrameLayout> {
+public abstract class ControlsAboveViewTestHarness<T> extends TestHarness<T, FrameLayout> {
 	@Override
-	protected void onCreate(final @Nullable Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsaboveview);
 		getTestViewContainer().addView((View) getTestView());
