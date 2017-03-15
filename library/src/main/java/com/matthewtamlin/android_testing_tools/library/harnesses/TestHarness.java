@@ -17,8 +17,6 @@
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.LinearLayout;
 
 /**
  * An activity which hosts a view to be tested, as well as controls for interacting with the view.
@@ -32,12 +30,12 @@ public abstract class TestHarness<V, C, R, I, O> extends AppCompatActivity {
 	/**
 	 * @return the root view of this Activity's layout, not null
 	 */
-	public abstract View getRootView();
+	public abstract R getRootView();
 
 	/**
 	 * @return the view which contains the controls, not null
 	 */
-	public abstract LinearLayout getInnerControlsContainer();
+	public abstract I getInnerControlsContainer();
 
 	/**
 	 * @return the view under test, not null
