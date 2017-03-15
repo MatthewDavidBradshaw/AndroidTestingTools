@@ -37,6 +37,8 @@ public abstract class TestHarness<V, C, R, I, O> extends AppCompatActivity {
 	 */
 	public abstract I getInnerControlsContainer();
 
+	public abstract O getOuterControlsContainer();
+
 	/**
 	 * @return the view under test, not null
 	 */
