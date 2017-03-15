@@ -17,7 +17,7 @@ public class DemoTestHarness extends ControlsOverViewTestHarness<DemoCustomView>
 	protected void onCreate(final @Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		getControlsContainer().addView(createControlButtonToSetText());
+		getInnerControlsContainer().addView(createControlButtonToSetText());
 	}
 
 	@Override

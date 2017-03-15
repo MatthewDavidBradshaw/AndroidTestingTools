@@ -49,7 +49,7 @@ public abstract class ControlsBelowViewTestHarness<V> extends TestHarness<V, Fra
 	}
 
 	@Override
-	public LinearLayout getControlsContainer() {
+	public LinearLayout getInnerControlsContainer() {
 		return (LinearLayout) findViewById(R.id.controlsBelowView_controlsContainer);
 	}
 
