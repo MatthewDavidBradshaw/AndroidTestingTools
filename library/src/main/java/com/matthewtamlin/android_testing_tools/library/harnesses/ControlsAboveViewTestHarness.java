@@ -24,6 +24,8 @@ import android.widget.LinearLayout;
 
 import com.matthewtamlin.android_testing_tools.library.R;
 
+import java.util.List;
+
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
@@ -69,6 +71,16 @@ public abstract class ControlsAboveViewTestHarness<T> extends TestHarness<T, Fra
 				.controlsAboveView_outerControlContainer);
 
 		outerControlsContainer.setVisibility(enable ? VISIBLE : GONE);
+	}
+
+	@Override
+	public void addControl(final View control) {
+		getInnerControlsContainer().addView(control);
+	}
+
+	@Override
+	public void removeControl(final View control) {
+		getInnerControlsContainer().removeView(control);
 	}
 
 	/**
