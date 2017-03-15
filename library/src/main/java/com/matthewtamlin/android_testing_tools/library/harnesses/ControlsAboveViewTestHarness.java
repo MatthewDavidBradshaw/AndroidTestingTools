@@ -44,8 +44,8 @@ public abstract class ControlsAboveViewTestHarness<T> extends TestHarness<T, Fra
 	}
 
 	@Override
-	public View getRootView() {
-		return findViewById(R.id.controlsAboveView_root);
+	public LinearLayout getRootView() {
+		return (LinearLayout) findViewById(R.id.controlsAboveView_root);
 	}
 
 	@Override
