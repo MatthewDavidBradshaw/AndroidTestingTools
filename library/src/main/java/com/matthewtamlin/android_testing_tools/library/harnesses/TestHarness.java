@@ -28,13 +28,11 @@ import android.widget.LinearLayout;
  * @param <C>
  * 		the type of view which contains the test view
  */
-public abstract class TestHarness<V, C> extends AppCompatActivity {
+public abstract class TestHarness<V, C, R, I, O> extends AppCompatActivity {
 	/**
 	 * @return the root view of this Activity's layout, not null
 	 */
 	public abstract View getRootView();
-
-	public abstract LinearLayout getOuterControlsContainer();
 
 	/**
 	 * @return the view which contains the controls, not null
