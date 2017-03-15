@@ -24,6 +24,9 @@ import android.widget.LinearLayout;
 
 import com.matthewtamlin.android_testing_tools.library.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static android.view.View.GONE;
@@ -37,6 +40,8 @@ import static android.view.View.VISIBLE;
  */
 public abstract class ControlsAboveViewTestHarness<T> extends TestHarness<T, FrameLayout,
 		LinearLayout, LinearLayout, LinearLayout> {
+	private final List<View> controls = new ArrayList<>();
+
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -76,11 +81,18 @@ public abstract class ControlsAboveViewTestHarness<T> extends TestHarness<T, Fra
 	@Override
 	public void addControl(final View control) {
 		getInnerControlsContainer().addView(control);
+		controls.add(control);
 	}
 
 	@Override
 	public void removeControl(final View control) {
 		getInnerControlsContainer().removeView(control);
+		controls.remove(control);
+	}
+
+	@Override
+	public List<View> getControls() {
+		return Collections.unmodifiableList(controls);
 	}
 
 	/**
