@@ -68,7 +68,14 @@ public abstract class ControlsAboveViewTestHarness<T>
 		testViewContainer = (FrameLayout) findViewById(R.id.controlsAboveView_testViewContainer);
 
 		getTestViewContainer().addView((View) getTestView());
-		initialiseControlHiding();
+
+		controlsVisibilityButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(final View v) {
+				innerControlsContainer.setVisibility(innerControlsContainer.getVisibility() ==
+						VISIBLE ? GONE : VISIBLE);
+			}
+		});
 	}
 
 	@Override
@@ -111,18 +118,5 @@ public abstract class ControlsAboveViewTestHarness<T>
 	@Override
 	public List<View> getControls() {
 		return Collections.unmodifiableList(controls);
-	}
-
-	/**
-	 * Configures a button to hide/show the controls when clicked.
-	 */
-	private void initialiseControlHiding() {
-		controlsVisibilityButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				innerControlsContainer.setVisibility(innerControlsContainer.getVisibility() ==
-						VISIBLE ? GONE : VISIBLE);
-			}
-		});
 	}
 }
