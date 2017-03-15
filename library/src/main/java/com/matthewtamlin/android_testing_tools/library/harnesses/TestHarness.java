@@ -24,12 +24,12 @@ import java.util.List;
 /**
  * An activity which hosts a view to be tested, as well as controls for interacting with the view.
  *
- * @param <V>
+ * @param <T>
  * 		the type of view being tested
  * @param <C>
  * 		the type of view which contains the test view
  */
-public abstract class TestHarness<V, C, R, I, O> extends AppCompatActivity {
+public abstract class TestHarness<T, C, R, I, O> extends AppCompatActivity {
 	/**
 	 * @return the root view of this Activity's layout, not null
 	 */
@@ -45,7 +45,7 @@ public abstract class TestHarness<V, C, R, I, O> extends AppCompatActivity {
 	/**
 	 * @return the view under test, not null
 	 */
-	public abstract V getTestView();
+	public abstract T getTestView();
 
 	/**
 	 * @return the view which contains the test view
