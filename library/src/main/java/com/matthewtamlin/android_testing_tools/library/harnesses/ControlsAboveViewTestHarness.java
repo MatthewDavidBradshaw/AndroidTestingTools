@@ -63,6 +63,14 @@ public abstract class ControlsAboveViewTestHarness<T> extends TestHarness<T, Fra
 		return (FrameLayout) findViewById(R.id.controlsAboveView_testViewContainer);
 	}
 
+	@Override
+	public void enableControls(final boolean enable) {
+		final LinearLayout outerControlsContainer = (LinearLayout) findViewById(R.id
+				.controlsAboveView_outerControlContainer);
+
+		outerControlsContainer.setVisibility(enable ? VISIBLE : GONE);
+	}
+
 	/**
 	 * Configures a button to hide/show the controls when clicked.
 	 */
@@ -79,13 +87,5 @@ public abstract class ControlsAboveViewTestHarness<T> extends TestHarness<T, Fra
 						VISIBLE ? GONE : VISIBLE);
 			}
 		});
-	}
-
-	@Override
-	public void enableControls(final boolean enable) {
-		final LinearLayout outerControlsContainer = (LinearLayout) findViewById(R.id
-				.controlsAboveView_outerControlContainer);
-
-		outerControlsContainer.setVisibility(enable ? VISIBLE : GONE);
 	}
 }
