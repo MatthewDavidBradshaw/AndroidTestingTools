@@ -34,10 +34,12 @@ public abstract class TestHarness<V, C> extends AppCompatActivity {
 	 */
 	public abstract View getRootView();
 
+	public abstract LinearLayout getOuterControlsContainer();
+
 	/**
 	 * @return the view which contains the controls, not null
 	 */
-	public abstract LinearLayout getControlsContainer();
+	public abstract LinearLayout getInnerControlsContainer();
 
 	/**
 	 * @return the view under test, not null
