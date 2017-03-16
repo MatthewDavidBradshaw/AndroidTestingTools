@@ -34,9 +34,10 @@ import static android.view.View.VISIBLE;
  * @param <T>
  * 		the type of view being tested
  */
-public abstract class ControlsBelowViewTestHarness<T> extends TestHarness<T, FrameLayout> {
+public abstract class ControlsBelowViewTestHarness<T>
+		extends TestHarness<T, FrameLayout, LinearLayout, LinearLayout, LinearLayout> {
 	@Override
-	protected void onCreate(final @Nullable Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsbelowview);
 		getTestViewContainer().addView((View) getTestView());
