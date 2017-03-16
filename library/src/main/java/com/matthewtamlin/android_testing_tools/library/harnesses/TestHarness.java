@@ -27,7 +27,13 @@ import java.util.List;
  * @param <T>
  * 		the type of view being tested
  * @param <C>
- * 		the type of view which contains the test view
+ * 		the type of view hosting the test view
+ * @param <R>
+ * 		the type of view used for the layout root
+ * @param <I>
+ * 		the type of view containing the controls
+ * @param <O>
+ * 		the type of view containing the controls a button for hiding/showing the controls
  */
 public abstract class TestHarness<T, C, R, I, O> extends AppCompatActivity {
 	/**
