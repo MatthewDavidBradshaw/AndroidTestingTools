@@ -28,6 +28,9 @@ public class ControlBinder {
 				} catch (final InvocationTargetException e) {
 					throw new RuntimeException("The @Control annotation can only be applied " +
 							"to public no-argument methods which return a View object.");
+				} catch (final IllegalArgumentException e) {
+					throw new RuntimeException("The @Control annotation can only be applied " +
+							"to public no-argument methods which return a View object.");
 				}
 
 				if (control == null) {
