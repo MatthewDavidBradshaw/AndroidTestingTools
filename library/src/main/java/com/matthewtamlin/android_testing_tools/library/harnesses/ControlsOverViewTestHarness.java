@@ -56,17 +56,17 @@ public abstract class ControlsOverViewTestHarness<T>
 
 	@Override
 	public FrameLayout getRootView() {
-		return findViewById(R.id.controlsOverView_root);
+		return rootView;
 	}
 
 	@Override
 	public LinearLayout getInnerControlsContainer() {
-		return (LinearLayout) findViewById(R.id.controlsOverView_controlsContainer);
+		return innerControlsContainer;
 	}
 
 	@Override
 	public FrameLayout getTestViewContainer() {
-		return (FrameLayout) findViewById(R.id.controlsOverView_testViewContainer);
+		return testViewContainer;
 	}
 
 	/**
