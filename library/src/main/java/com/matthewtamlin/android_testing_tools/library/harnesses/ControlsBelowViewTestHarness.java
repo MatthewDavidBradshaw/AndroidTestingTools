@@ -25,9 +25,9 @@ import com.matthewtamlin.android_testing_tools.library.R;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_controlsContainer;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_innerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_hideShowControlsButton;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_outerControlsContainer;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_outerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_root;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_testViewContainer;
 
@@ -55,9 +55,9 @@ public abstract class ControlsBelowViewTestHarness<T>
 		rootView = (LinearLayout) findViewById(
 				controlsBelowView_root);
 		innerControlsContainer = (LinearLayout) findViewById(
-				controlsBelowView_controlsContainer);
+				controlsBelowView_innerControls);
 		outerControlsContainer = (LinearLayout) findViewById(
-				controlsBelowView_outerControlsContainer);
+				controlsBelowView_outerControls);
 		testViewContainer = (FrameLayout) findViewById(
 				controlsBelowView_testViewContainer);
 
@@ -97,7 +97,7 @@ public abstract class ControlsBelowViewTestHarness<T>
 	@Override
 	public void enableControls(final boolean enable) {
 		final LinearLayout outerControlsContainer = (LinearLayout) findViewById(
-				controlsBelowView_outerControlsContainer);
+				controlsBelowView_outerControls);
 
 		outerControlsContainer.setVisibility(enable ? VISIBLE : GONE);
 	}

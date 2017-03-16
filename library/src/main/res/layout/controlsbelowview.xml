@@ -32,7 +32,7 @@ limitations under the License.
 		android:fitsSystemWindows="true"/>
 
 	<LinearLayout
-		android:id="@+id/controlsBelowView_outerControlsContainer"
+		android:id="@+id/controlsBelowView_outerControls"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:fitsSystemWindows="true"
@@ -51,7 +51,7 @@ limitations under the License.
 			android:layout_height="wrap_content">
 
 			<LinearLayout
-				android:id="@+id/controlsBelowView_controlsContainer"
+				android:id="@+id/controlsBelowView_innerControls"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:orientation="vertical"/>
