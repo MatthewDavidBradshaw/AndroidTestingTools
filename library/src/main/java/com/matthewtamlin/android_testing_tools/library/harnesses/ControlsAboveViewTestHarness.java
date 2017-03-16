@@ -17,6 +17,7 @@
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -42,7 +43,8 @@ import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAbove
  * 		the type of view being tested
  */
 public abstract class ControlsAboveViewTestHarness<T>
-		extends TestHarness<T, FrameLayout, LinearLayout, LinearLayout, LinearLayout> {
+		extends AppCompatActivity
+		implements TestHarness<T, FrameLayout, LinearLayout, LinearLayout, LinearLayout> {
 	private final List<View> controls = new ArrayList<>();
 
 	private LinearLayout rootView;
