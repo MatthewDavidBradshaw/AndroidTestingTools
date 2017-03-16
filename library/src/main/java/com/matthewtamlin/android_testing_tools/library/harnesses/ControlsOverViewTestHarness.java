@@ -45,7 +45,7 @@ public abstract class ControlsOverViewTestHarness<T>
 	}
 
 	@Override
-	public View getRootView() {
+	public FrameLayout getRootView() {
 		return findViewById(R.id.controlsOverView_root);
 	}
 
