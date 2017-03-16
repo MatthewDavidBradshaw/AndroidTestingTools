@@ -23,14 +23,14 @@ public class ControlBinder {
 					m.setAccessible(true);
 					control = (View) m.invoke(testHarness);
 				} catch (final IllegalAccessException e) {
-					throw new RuntimeException("The @Control annotation can only be applied " +
-							"to public no-argument methods which return a View object.");
+					throw new RuntimeException("Unable to invoke a method annotated with " +
+							"@Control. Does the method meet the requirements of the annotation?");
 				} catch (final InvocationTargetException e) {
-					throw new RuntimeException("The @Control annotation can only be applied " +
-							"to public no-argument methods which return a View object.");
+					throw new RuntimeException("Unable to invoke a method annotated with " +
+							"@Control. Does the method meet the requirements of the annotation?");
 				} catch (final IllegalArgumentException e) {
-					throw new RuntimeException("The @Control annotation can only be applied " +
-							"to public no-argument methods which return a View object.");
+					throw new RuntimeException("Unable to invoke a method annotated with " +
+							"@Control. Does the method meet the requirements of the annotation?");
 				}
 
 				if (control == null) {
