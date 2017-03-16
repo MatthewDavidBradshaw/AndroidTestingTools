@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.matthewtamlin.android_testing_tools.library.harnesses.Control;
 import com.matthewtamlin.android_testing_tools.library.harnesses.ControlBinder;
-import com.matthewtamlin.android_testing_tools.library.harnesses.TestHarness;
+import com.matthewtamlin.android_testing_tools.testing.harnesses.stubs.StubTestHarness;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,9 +12,9 @@ import org.junit.runners.JUnit4;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import static org.hamcrest.MatcherAssert.assertThat;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.mock;
 
@@ -31,7 +31,7 @@ public class TestControlBinder {
 
 		ControlBinder.bindControls(testHarness);
 
-		assertThat(testHarness.controls, is(new ArrayList<View>()));
+		assertThat(testHarness.getControls(), is((List) new ArrayList<View>()));
 	}
 
 	@Test(expected = InvocationTargetException.class)
@@ -107,12 +107,12 @@ public class TestControlBinder {
 
 		ControlBinder.bindControls(testHarness);
 
-		final ArrayList<View> expectedViews = new ArrayList<>();
+		final List<View> expectedViews = new ArrayList<>();
 		expectedViews.add(view1);
 		expectedViews.add(view2);
 		expectedViews.add(view3);
 
-		assertThat(testHarness.controls, is(expectedViews));
+		assertThat(testHarness.getControls(), is(expectedViews));
 	}
 
 	@Test
@@ -128,10 +128,10 @@ public class TestControlBinder {
 
 		ControlBinder.bindControls(testHarness);
 
-		final ArrayList<View> expectedViews = new ArrayList<>();
+		final List<View> expectedViews = new ArrayList<>();
 		expectedViews.add(view);
 
-		assertThat(testHarness.controls, is(expectedViews));
+		assertThat(testHarness.getControls(), is(expectedViews));
 	}
 
 	@Test
@@ -140,6 +140,6 @@ public class TestControlBinder {
 
 		ControlBinder.bindControls(testHarness);
 
-		assertThat(testHarness.controls, is(new ArrayList<View>()));
+		assertThat(testHarness.getControls(), is((List) new ArrayList<View>()));
 	}
 }
