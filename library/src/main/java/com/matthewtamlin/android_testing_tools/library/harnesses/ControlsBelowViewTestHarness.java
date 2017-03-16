@@ -87,6 +87,11 @@ public abstract class ControlsBelowViewTestHarness<T>
 	}
 
 	@Override
+	public LinearLayout getOuterControlsContainer() {
+		return outerControlsContainer;
+	}
+
+	@Override
 	public FrameLayout getTestViewContainer() {
 		return testViewContainer;
 	}
