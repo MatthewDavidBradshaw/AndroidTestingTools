@@ -23,14 +23,14 @@ public class ControlBinder {
 					m.setAccessible(true);
 					control = (View) m.invoke(testHarness);
 				} catch (final IllegalAccessException e) {
-					throw new RuntimeException("Unable to invoke a method annotated with @Control" +
-							". Does the method meet the requirements of the annotation?", e);
+					throw new RuntimeException("Unable to access a method annotated with " +
+							"@Control. The method must be public or protected.", e);
 				} catch (final InvocationTargetException e) {
-					throw new RuntimeException("Unable to invoke a method annotated with @Control" +
-							". Does the method meet the requirements of the annotation?", e);
+					throw new RuntimeException("A method annotated with @Control threw an " +
+							"exception when invoked.", e);
 				} catch (final IllegalArgumentException e) {
-					throw new RuntimeException("Unable to invoke a method annotated with @Control" +
-							". Does the method meet the requirements of the annotation?", e);
+					throw new RuntimeException("Unable to invoke a method annotated with " +
+							"@Control. The method must accept no arguments.", e);
 				}
 
 				if (control == null) {
