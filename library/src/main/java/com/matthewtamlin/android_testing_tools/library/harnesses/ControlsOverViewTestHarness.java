@@ -37,7 +37,7 @@ import static android.view.View.VISIBLE;
 public abstract class ControlsOverViewTestHarness<T>
 		extends TestHarness<T, FrameLayout, FrameLayout, LinearLayout, LinearLayout> {
 	@Override
-	protected void onCreate(final @Nullable Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsoverview);
 		getTestViewContainer().addView((View) getTestView());
