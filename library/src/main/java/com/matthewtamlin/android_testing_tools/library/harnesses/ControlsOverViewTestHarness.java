@@ -27,6 +27,7 @@ import com.matthewtamlin.android_testing_tools.library.R;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_hideShowControlsButton;
 
 /**
  * A TestHarness which displays control buttons on top of the test view.
@@ -36,6 +37,15 @@ import static android.view.View.VISIBLE;
  */
 public abstract class ControlsOverViewTestHarness<T>
 		extends TestHarness<T, FrameLayout, FrameLayout, LinearLayout, LinearLayout> {
+
+	private FrameLayout rootView;
+
+	private LinearLayout innerControlsContainer;
+
+	private LinearLayout outerControlsContainer;
+
+	private FrameLayout testViewContainer;
+
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
