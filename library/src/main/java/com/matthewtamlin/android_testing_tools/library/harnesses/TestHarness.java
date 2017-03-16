@@ -21,30 +21,35 @@ import android.view.View;
 import java.util.List;
 
 /**
- * An activity which hosts a view to be tested, as well as controls for interacting with the view.
+ * Displays a view and a series of controls for interacting with the view.
  *
  * @param <T>
- * 		the type of view being tested
+ * 		the type of the view being tested
  * @param <C>
- * 		the type of view hosting the test view
+ * 		the type of the view hosting the test view
  * @param <R>
- * 		the type of view used for the layout root
+ * 		the type of the root view
  * @param <I>
- * 		the type of view containing the controls
+ * 		the type of the view containing the controls
  * @param <O>
- * 		the type of view containing the controls a button for hiding/showing the controls
+ * 		the type of the view containing the control container along with a button for hiding and
+ * 		showing the	controls
  */
 public interface TestHarness<T, C, R, I, O> {
 	/**
-	 * @return the root view of this Activity's layout, not null
+	 * @return the root view, not null
 	 */
 	public R getRootView();
 
 	/**
-	 * @return the view which contains the controls, not null
+	 * @return the view containing the controls, not null
 	 */
 	public I getInnerControlsContainer();
 
+	/**
+	 * @return the view containing the controls and the button for toggling the visibility of the
+	 * controls
+	 */
 	public O getOuterControlsContainer();
 
 	/**
@@ -53,22 +58,38 @@ public interface TestHarness<T, C, R, I, O> {
 	public T getTestView();
 
 	/**
-	 * @return the view which contains the test view
+	 * @return the view hosting the test view
 	 */
 	public C getTestViewContainer();
 
 	/**
-	 * Allows the controls to be entirely hidden and disabled. This includes the button for
-	 * temporarily hiding and showing the controls.
+	 * Entirely disables or enables the controls. The controls are not shown when disabled.
 	 *
 	 * @param enable
-	 * 		true to enable the controls, false to disable then
+	 * 		true to enable the controls, false to disable them
 	 */
 	public void enableControls(boolean enable);
 
+	/**
+	 * Adds the supplied control to the controls container.
+	 *
+	 * @param control
+	 * 		the control to add, not null
+	 */
 	public void addControl(View control);
 
+	/**
+	 * Removes the supplied control from the controls container.
+	 *
+	 * @param control
+	 * 		the control to remove, not null
+	 */
 	public void removeControl(View control);
 
+	/**
+	 * A list containing all controls. The view might not be modifiable.
+	 *
+	 * @return the list, not null
+	 */
 	public List<View> getControls();
 }
