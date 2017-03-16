@@ -18,7 +18,6 @@ package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -31,8 +30,10 @@ import java.util.List;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_controlsContainer;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_hideShowControlsButton;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_outerControlContainer;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_root;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_testViewContainer;
 
 /**
  * A TestHarness which displays control buttons above the test view.
@@ -57,23 +58,26 @@ public abstract class ControlsAboveViewTestHarness<T>
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsaboveview);
 
-		rootView = (LinearLayout) findViewById(controlsAboveView_root);
-		innerControlsContainer = (LinearLayout) findViewById(controlsAboveView_controlsContainer);
-		outerControlsContainer = (LinearLayout) findViewById
-				(controlsAboveView_outerControlContainer);
-		testViewContainer = (FrameLayout) findViewById(R.id.controlsAboveView_testViewContainer);
+		rootView = (LinearLayout) findViewById(
+				controlsAboveView_root);
+		innerControlsContainer = (LinearLayout) findViewById(
+				controlsAboveView_controlsContainer);
+		outerControlsContainer = (LinearLayout) findViewById(
+				controlsAboveView_outerControlContainer);
+		testViewContainer = (FrameLayout) findViewById(
+				controlsAboveView_testViewContainer);
+
+		findViewById(controlsAboveView_hideShowControlsButton)
+				.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(final View v) {
+						final int currentVis = innerControlsContainer.getVisibility();
+						final int newVis = currentVis == VISIBLE ? GONE : VISIBLE;
+						innerControlsContainer.setVisibility(newVis);
+					}
+				});
 
 		getTestViewContainer().addView((View) getTestView());
-
-		final Button controlsVisibilityButton = (Button) findViewById(R.id
-				.controlsAboveView_hideShowControlsButton);
-		controlsVisibilityButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				innerControlsContainer.setVisibility(innerControlsContainer.getVisibility() ==
-						VISIBLE ? GONE : VISIBLE);
-			}
-		});
 	}
 
 	@Override
