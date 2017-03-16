@@ -10,7 +10,7 @@ import java.util.TreeMap;
 import static com.matthewtamlin.java_utilities.checkers.NullChecker.checkNotNull;
 
 public class ControlBinder {
-	public static void bindControls(final TestHarness<?, ?> testHarness) {
+	public static void bindControls(final TestHarness<?, ?, ?, ?, ?> testHarness) {
 		checkNotNull(testHarness, "testHarness cannot be null.");
 
 		final Map<Integer, View> controls = new TreeMap<>();
