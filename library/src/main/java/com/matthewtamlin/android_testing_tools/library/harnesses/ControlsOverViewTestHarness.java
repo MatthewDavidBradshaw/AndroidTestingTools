@@ -26,9 +26,11 @@ import com.matthewtamlin.android_testing_tools.library.R;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_hideShowControlsButton;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_innerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_outerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_root;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_showHideControlsButton;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_testViewContainer;
 
 /**
@@ -57,6 +59,16 @@ public abstract class ControlsOverViewTestHarness<T>
 		innerControlsContainer = (LinearLayout) findViewById(controlsOverView_innerControls);
 		outerControlsContainer = (LinearLayout) findViewById(controlsOverView_outerControls);
 		testViewContainer = (FrameLayout) findViewById(controlsOverView_testViewContainer);
+
+		findViewById(controlsOverView_showHideControlsButton)
+				.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(final View v) {
+						final int currentVis = innerControlsContainer.getVisibility();
+						final int newVis = currentVis == VISIBLE ? GONE : VISIBLE;
+						innerControlsContainer.setVisibility(newVis);
+					}
+				});
 
 		getTestViewContainer().addView((View) getTestView());
 	}
