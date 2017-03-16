@@ -21,18 +21,31 @@ public class ControlBinder {
 
 				try {
 					m.setAccessible(true);
+
+					final Object result = m.invoke(testHarness);
+
+					if (result == null) {
+						throw new RuntimeException("A method annotated with @Control returned " +
+								"null.");
+					}
+
+					if (!(result instanceof View)) {
+						throw new RuntimeException("A method annotated with @Control returned a " +
+								"object which is not a View.");
+					}
+
 					control = (View) m.invoke(testHarness);
 				} catch (final IllegalAccessException e) {
-					throw new RuntimeException("The @Control annotation can only be applied " +
-							"to public no-argument methods which return a View object.");
+					throw new RuntimeException("Unable to access a method annotated with " +
+							"@Control. The method must be public or protected.", e);
 				} catch (final InvocationTargetException e) {
-					throw new RuntimeException("The @Control annotation can only be applied " +
-							"to public no-argument methods which return a View object.");
+					throw new RuntimeException("A method annotated with @Control threw an " +
+							"exception when invoked.", e);
+				} catch (final IllegalArgumentException e) {
+					throw new RuntimeException("Unable to invoke a method annotated with " +
+							"@Control. The method must accept no arguments.", e);
 				}
 
-				if (control == null) {
-					throw new RuntimeException("A method annotated with @Control returned null.");
-				}
 
 				final Control annotation = m.getAnnotation(Control.class);
 				final int controlIndex = annotation.value();
