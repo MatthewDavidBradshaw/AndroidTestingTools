@@ -90,9 +90,6 @@ public abstract class ControlsOverViewTestHarness<T>
 
 	@Override
 	public void enableControls(final boolean enable) {
-		final LinearLayout outerControlsContainer = (LinearLayout) findViewById(R.id
-				.controlsOverView_outerControlsContainer);
-
 		outerControlsContainer.setVisibility(enable ? VISIBLE : GONE);
 	}
 }
