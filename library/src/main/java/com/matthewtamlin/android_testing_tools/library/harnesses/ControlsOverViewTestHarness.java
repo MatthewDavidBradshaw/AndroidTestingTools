@@ -34,7 +34,8 @@ import static android.view.View.VISIBLE;
  * @param <T>
  * 		the type of view being tested
  */
-public abstract class ControlsOverViewTestHarness<T> extends TestHarness<T, FrameLayout> {
+public abstract class ControlsOverViewTestHarness<T>
+		extends TestHarness<T, FrameLayout, FrameLayout, LinearLayout, LinearLayout> {
 	@Override
 	protected void onCreate(final @Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
