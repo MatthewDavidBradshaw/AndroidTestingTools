@@ -84,12 +84,54 @@ public class TestControlBinder {
 
 	@Test
 	public void testBindControls_annotationOnMultipleValidMethods() {
+		final View view1 = mock(View.class);
+		final View view2 = mock(View.class);
+		final View view3 = mock(View.class);
 
+		final StubTestHarness testHarness = new StubTestHarness() {
+			@Control(2)
+			public View someMethod2() {
+				return view2;
+			}
+
+			@Control(1)
+			public View someMethod1() {
+				return view1;
+			}
+
+			@Control(3)
+			public View someMethod3() {
+				return view3;
+			}
+		};
+
+		ControlBinder.bindControls(testHarness);
+
+		final ArrayList<View> expectedViews = new ArrayList<>();
+		expectedViews.add(view1);
+		expectedViews.add(view2);
+		expectedViews.add(view3);
+
+		assertThat(testHarness.controls, is(expectedViews));
 	}
 
 	@Test
 	public void testBindControls_annotationOnSingleValidMethods() {
+		final View view = mock(View.class);
 
+		final StubTestHarness testHarness = new StubTestHarness() {
+			@Control(1)
+			public View someMethod() {
+				return view;
+			}
+		};
+
+		ControlBinder.bindControls(testHarness);
+
+		final ArrayList<View> expectedViews = new ArrayList<>();
+		expectedViews.add(view);
+
+		assertThat(testHarness.controls, is(expectedViews));
 	}
 
 	@Test
@@ -146,7 +188,7 @@ public class TestControlBinder {
 
 		@Override
 		public List<View> getControls() {
-			return null;
+			return controls;
 		}
 	}
 }
