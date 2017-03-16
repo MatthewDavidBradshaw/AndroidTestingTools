@@ -17,70 +17,106 @@
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.matthewtamlin.android_testing_tools.library.R;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_innerControls;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_hideShowControlsButton;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_outerControls;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_root;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_testViewContainer;
 
 /**
  * A TestHarness which displays control buttons above the test view.
  *
- * @param <V>
+ * @param <T>
  * 		the type of view being tested
  */
-public abstract class ControlsAboveViewTestHarness<V> extends TestHarness<V, FrameLayout> {
+public abstract class ControlsAboveViewTestHarness<T>
+		extends AppCompatActivity
+		implements TestHarness<T, FrameLayout, LinearLayout, LinearLayout, LinearLayout> {
+	private final List<View> controls = new ArrayList<>();
+
+	private LinearLayout rootView;
+
+	private LinearLayout innerControlsContainer;
+
+	private LinearLayout outerControlsContainer;
+
+	private FrameLayout testViewContainer;
+
 	@Override
-	protected void onCreate(final @Nullable Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsaboveview);
+
+		rootView = (LinearLayout) findViewById(controlsAboveView_root);
+		innerControlsContainer = (LinearLayout) findViewById(controlsAboveView_innerControls);
+		outerControlsContainer = (LinearLayout) findViewById(controlsAboveView_outerControls);
+		testViewContainer = (FrameLayout) findViewById(controlsAboveView_testViewContainer);
+
+		findViewById(controlsAboveView_hideShowControlsButton)
+				.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(final View v) {
+						final int currentVis = innerControlsContainer.getVisibility();
+						final int newVis = currentVis == VISIBLE ? GONE : VISIBLE;
+						innerControlsContainer.setVisibility(newVis);
+					}
+				});
+
 		getTestViewContainer().addView((View) getTestView());
-		initialiseControlHiding();
 	}
 
 	@Override
-	public View getRootView() {
-		return findViewById(R.id.controlsAboveView_root);
+	public LinearLayout getRootView() {
+		return rootView;
 	}
 
 	@Override
-	public LinearLayout getControlsContainer() {
-		return (LinearLayout) findViewById(R.id.controlsAboveView_controlsContainer);
+	public LinearLayout getInnerControlsContainer() {
+		return innerControlsContainer;
+	}
+
+	@Override
+	public LinearLayout getOuterControlsContainer() {
+		return outerControlsContainer;
 	}
 
 	@Override
 	public FrameLayout getTestViewContainer() {
-		return (FrameLayout) findViewById(R.id.controlsAboveView_testViewContainer);
-	}
-
-	/**
-	 * Configures a button to hide/show the controls when clicked.
-	 */
-	private void initialiseControlHiding() {
-		final Button toggleControlVisibilityButton = (Button) findViewById(R.id
-				.controlsAboveView_hideShowControlsButton);
-		final LinearLayout controlButtonContainer = (LinearLayout) findViewById(R.id
-				.controlsAboveView_controlsContainer);
-
-		toggleControlVisibilityButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				controlButtonContainer.setVisibility(controlButtonContainer.getVisibility() ==
-						VISIBLE ? GONE : VISIBLE);
-			}
-		});
+		return testViewContainer;
 	}
 
 	@Override
 	public void enableControls(final boolean enable) {
-		final LinearLayout outerControlsContainer = (LinearLayout) findViewById(R.id
-				.controlsAboveView_outerControlContainer);
-
 		outerControlsContainer.setVisibility(enable ? VISIBLE : GONE);
+	}
+
+	@Override
+	public void addControl(final View control) {
+		getInnerControlsContainer().addView(control);
+		controls.add(control);
+	}
+
+	@Override
+	public void removeControl(final View control) {
+		getInnerControlsContainer().removeView(control);
+		controls.remove(control);
+	}
+
+	@Override
+	public List<View> getControls() {
+		return Collections.unmodifiableList(controls);
 	}
 }

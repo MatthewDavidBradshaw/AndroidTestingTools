@@ -40,7 +40,7 @@ public class ControlBinder {
 		}
 
 		for (final Integer index : controls.keySet()) {
-			testHarness.getControlsContainer().addView(controls.get(index));
+			testHarness.getInnerControlsContainer().addView(controls.get(index));
 		}
 	}
 }
