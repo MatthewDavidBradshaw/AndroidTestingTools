@@ -22,7 +22,7 @@ import android.view.View;
  * A TestHarness which displays no view. Useful when a real Activity is needed in testing, but no
  * view is required.
  */
-public class NoViewTestHarness extends ControlsOverViewTestHarness<View> {
+public class EmptyTestHarness extends ControlsOverViewTestHarness<View> {
 	@Override
 	public View getTestView() {
 		return new View(this);
