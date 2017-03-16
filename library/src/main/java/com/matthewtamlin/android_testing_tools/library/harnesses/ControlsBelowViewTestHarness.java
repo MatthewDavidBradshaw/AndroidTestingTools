@@ -31,10 +31,10 @@ import static android.view.View.VISIBLE;
 /**
  * A TestHarness which displays control buttons below the test view.
  *
- * @param <V>
+ * @param <T>
  * 		the type of view being tested
  */
-public abstract class ControlsBelowViewTestHarness<V> extends TestHarness<V, FrameLayout> {
+public abstract class ControlsBelowViewTestHarness<T> extends TestHarness<T, FrameLayout> {
 	@Override
 	protected void onCreate(final @Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
