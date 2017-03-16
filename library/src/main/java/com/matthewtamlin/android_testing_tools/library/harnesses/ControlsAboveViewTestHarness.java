@@ -50,8 +50,6 @@ public abstract class ControlsAboveViewTestHarness<T>
 
 	private LinearLayout outerControlsContainer;
 
-	private Button controlsVisibilityButton;
-
 	private FrameLayout testViewContainer;
 
 	@Override
@@ -63,12 +61,12 @@ public abstract class ControlsAboveViewTestHarness<T>
 		innerControlsContainer = (LinearLayout) findViewById(controlsAboveView_controlsContainer);
 		outerControlsContainer = (LinearLayout) findViewById
 				(controlsAboveView_outerControlContainer);
-		controlsVisibilityButton = (Button) findViewById(R.id
-				.controlsAboveView_hideShowControlsButton);
 		testViewContainer = (FrameLayout) findViewById(R.id.controlsAboveView_testViewContainer);
 
 		getTestViewContainer().addView((View) getTestView());
 
+		final Button controlsVisibilityButton = (Button) findViewById(R.id
+				.controlsAboveView_hideShowControlsButton);
 		controlsVisibilityButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(final View v) {
