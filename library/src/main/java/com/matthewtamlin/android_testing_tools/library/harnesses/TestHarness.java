@@ -16,7 +16,6 @@
 
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import java.util.List;
@@ -27,30 +26,36 @@ import java.util.List;
  * @param <T>
  * 		the type of view being tested
  * @param <C>
- * 		the type of view which contains the test view
+ * 		the type of view hosting the test view
+ * @param <R>
+ * 		the type of view used for the layout root
+ * @param <I>
+ * 		the type of view containing the controls
+ * @param <O>
+ * 		the type of view containing the controls a button for hiding/showing the controls
  */
-public abstract class TestHarness<T, C, R, I, O> extends AppCompatActivity {
+public interface TestHarness<T, C, R, I, O> {
 	/**
 	 * @return the root view of this Activity's layout, not null
 	 */
-	public abstract R getRootView();
+	public R getRootView();
 
 	/**
 	 * @return the view which contains the controls, not null
 	 */
-	public abstract I getInnerControlsContainer();
+	public I getInnerControlsContainer();
 
-	public abstract O getOuterControlsContainer();
+	public O getOuterControlsContainer();
 
 	/**
 	 * @return the view under test, not null
 	 */
-	public abstract T getTestView();
+	public T getTestView();
 
 	/**
 	 * @return the view which contains the test view
 	 */
-	public abstract C getTestViewContainer();
+	public C getTestViewContainer();
 
 	/**
 	 * Allows the controls to be entirely hidden and disabled. This includes the button for
@@ -59,11 +64,11 @@ public abstract class TestHarness<T, C, R, I, O> extends AppCompatActivity {
 	 * @param enable
 	 * 		true to enable the controls, false to disable then
 	 */
-	public abstract void enableControls(boolean enable);
+	public void enableControls(boolean enable);
 
-	public abstract void addControl(View control);
+	public void addControl(View control);
 
-	public abstract void removeControl(View control);
+	public void removeControl(View control);
 
-	public abstract List<View> getControls();
+	public List<View> getControls();
 }

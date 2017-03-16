@@ -16,15 +16,13 @@
 
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
-import android.annotation.SuppressLint;
 import android.view.View;
 
 /**
- * A TestHarness which displays no view. Useful when an Activity is needed in testing, but no view
- * is required.
+ * A TestHarness which displays no view. Useful when a real Activity is needed in testing, but no
+ * view is required.
  */
-@SuppressLint("Registered") // Class is part of a public API and is not instantiated in this project
-public class NoViewTestHarness extends ControlsOverViewTestHarness<View> {
+public class EmptyTestHarness extends ControlsOverViewTestHarness<View> {
 	@Override
 	public View getTestView() {
 		return new View(this);
