@@ -17,6 +17,7 @@
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -29,8 +30,8 @@ import java.util.List;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_innerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_hideShowControlsButton;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_innerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_outerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_root;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_testViewContainer;
@@ -42,7 +43,8 @@ import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelow
  * 		the type of view being tested
  */
 public abstract class ControlsBelowViewTestHarness<T>
-		extends TestHarness<T, FrameLayout, LinearLayout, LinearLayout, LinearLayout> {
+		extends AppCompatActivity
+		implements TestHarness<T, FrameLayout, LinearLayout, LinearLayout, LinearLayout> {
 	private final List<View> controls = new ArrayList<>();
 
 	private LinearLayout rootView;
@@ -72,7 +74,7 @@ public abstract class ControlsBelowViewTestHarness<T>
 						innerControlsContainer.setVisibility(newVis);
 					}
 				});
-		
+
 		getTestViewContainer().addView((View) getTestView());
 	}
 
