@@ -58,14 +58,10 @@ public abstract class ControlsAboveViewTestHarness<T>
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsaboveview);
 
-		rootView = (LinearLayout) findViewById(
-				controlsAboveView_root);
-		innerControlsContainer = (LinearLayout) findViewById(
-				controlsAboveView_innerControls);
-		outerControlsContainer = (LinearLayout) findViewById(
-				controlsAboveView_outerControls);
-		testViewContainer = (FrameLayout) findViewById(
-				controlsAboveView_testViewContainer);
+		rootView = (LinearLayout) findViewById(controlsAboveView_root);
+		innerControlsContainer = (LinearLayout) findViewById(controlsAboveView_innerControls);
+		outerControlsContainer = (LinearLayout) findViewById(controlsAboveView_outerControls);
+		testViewContainer = (FrameLayout) findViewById(controlsAboveView_testViewContainer);
 
 		findViewById(controlsAboveView_hideShowControlsButton)
 				.setOnClickListener(new View.OnClickListener() {
