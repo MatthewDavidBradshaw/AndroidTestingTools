@@ -29,9 +29,9 @@ import java.util.List;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_controlsContainer;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_innerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_hideShowControlsButton;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_outerControlContainer;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_outerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_root;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_testViewContainer;
 
@@ -61,9 +61,9 @@ public abstract class ControlsAboveViewTestHarness<T>
 		rootView = (LinearLayout) findViewById(
 				controlsAboveView_root);
 		innerControlsContainer = (LinearLayout) findViewById(
-				controlsAboveView_controlsContainer);
+				controlsAboveView_innerControls);
 		outerControlsContainer = (LinearLayout) findViewById(
-				controlsAboveView_outerControlContainer);
+				controlsAboveView_outerControls);
 		testViewContainer = (FrameLayout) findViewById(
 				controlsAboveView_testViewContainer);
 
