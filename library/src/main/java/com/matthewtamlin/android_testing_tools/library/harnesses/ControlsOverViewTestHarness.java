@@ -24,6 +24,10 @@ import android.widget.LinearLayout;
 
 import com.matthewtamlin.android_testing_tools.library.R;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_hideShowControlsButton;
@@ -41,6 +45,7 @@ import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverV
  */
 public abstract class ControlsOverViewTestHarness<T>
 		extends TestHarness<T, FrameLayout, FrameLayout, LinearLayout, LinearLayout> {
+	private final List<View> controls = new ArrayList<>();
 
 	private FrameLayout rootView;
 
@@ -84,6 +89,11 @@ public abstract class ControlsOverViewTestHarness<T>
 	}
 
 	@Override
+	public LinearLayout getOuterControlsContainer() {
+		return outerControlsContainer;
+	}
+
+	@Override
 	public FrameLayout getTestViewContainer() {
 		return testViewContainer;
 	}
@@ -91,5 +101,22 @@ public abstract class ControlsOverViewTestHarness<T>
 	@Override
 	public void enableControls(final boolean enable) {
 		outerControlsContainer.setVisibility(enable ? VISIBLE : GONE);
+	}
+
+	@Override
+	public void addControl(final View control) {
+		getInnerControlsContainer().addView(control);
+		controls.add(control);
+	}
+
+	@Override
+	public void removeControl(final View control) {
+		getInnerControlsContainer().removeView(control);
+		controls.remove(control);
+	}
+
+	@Override
+	public List<View> getControls() {
+		return Collections.unmodifiableList(controls);
 	}
 }
