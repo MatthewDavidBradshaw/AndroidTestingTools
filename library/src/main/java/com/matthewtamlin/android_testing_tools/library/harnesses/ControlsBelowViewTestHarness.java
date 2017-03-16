@@ -70,9 +70,7 @@ public abstract class ControlsBelowViewTestHarness<T>
 						innerControlsContainer.setVisibility(newVis);
 					}
 				});
-
-
-
+		
 		getTestViewContainer().addView((View) getTestView());
 	}
 
