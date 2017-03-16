@@ -27,7 +27,9 @@ import com.matthewtamlin.android_testing_tools.library.R;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_hideShowControlsButton;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_controlsContainer;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_hideShowControlsButton;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_root;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_testViewContainer;
 
@@ -57,8 +59,19 @@ public abstract class ControlsBelowViewTestHarness<T>
 		testViewContainer = (FrameLayout) findViewById(
 				controlsBelowView_testViewContainer);
 
+		findViewById(controlsBelowView_hideShowControlsButton)
+				.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(final View v) {
+						final int currentVis = innerControlsContainer.getVisibility();
+						final int newVis = currentVis == VISIBLE ? GONE : VISIBLE;
+						innerControlsContainer.setVisibility(newVis);
+					}
+				});
+
+
+
 		getTestViewContainer().addView((View) getTestView());
-		initialiseControlHiding();
 	}
 
 	@Override
@@ -74,24 +87,6 @@ public abstract class ControlsBelowViewTestHarness<T>
 	@Override
 	public FrameLayout getTestViewContainer() {
 		return testViewContainer;
-	}
-
-	/**
-	 * Configures a button to hide/show the controls when clicked.
-	 */
-	private void initialiseControlHiding() {
-		final Button toggleControlVisibilityButton = (Button) findViewById(R.id
-				.controlsBelowView_hideShowControlsButton);
-		final LinearLayout controlButtonContainer = (LinearLayout) findViewById(
-				controlsBelowView_controlsContainer);
-
-		toggleControlVisibilityButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				controlButtonContainer.setVisibility(controlButtonContainer.getVisibility() ==
-						VISIBLE ? GONE : VISIBLE);
-			}
-		});
 	}
 
 	@Override
