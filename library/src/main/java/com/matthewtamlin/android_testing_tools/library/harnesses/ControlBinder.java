@@ -17,30 +17,36 @@ public class ControlBinder {
 
 		for (final Method m : testHarness.getClass().getMethods()) {
 			if (m.isAnnotationPresent(Control.class)) {
+				View control;
+
 				try {
-					final View control = (View) m.invoke(testHarness);
-
-					final Control controlAnnotation = m.getAnnotation(Control.class);
-					final int index = controlAnnotation.value();
-
-					if (controls.keySet().contains(index)) {
-						throw new RuntimeException("All @Control methods in a single class must " +
-								"have unique values.");
-					}
-
-					controls.put(index, control);
+					control = (View) m.invoke(testHarness);
 				} catch (final IllegalAccessException e) {
-					throw new RuntimeException("@Control an only be applied to a method if it is " +
-							"public, accepts no arguments, and returns a View.");
+					throw new RuntimeException("The @Control annotation can only be applied " +
+							"to public no-argument methods which return a View object.");
 				} catch (final InvocationTargetException e) {
-					throw new RuntimeException("@Control an only be applied to a method if it is " +
-							"public, accepts no arguments, and returns a View.");
+					throw new RuntimeException("The @Control annotation can only be applied " +
+							"to public no-argument methods which return a View object.");
 				}
+
+				if (control == null) {
+					throw new RuntimeException("A method annotated with @Control returned null.");
+				}
+
+				final Control annotation = m.getAnnotation(Control.class);
+				final int controlIndex = annotation.value();
+
+				if (controls.keySet().contains(controlIndex)) {
+					throw new RuntimeException("All @Control annotations in a single class must " +
+							"have unique values.");
+				}
+
+				controls.put(controlIndex, control);
 			}
 		}
 
 		for (final Integer index : controls.keySet()) {
-			testHarness.getInnerControlsContainer().addView(controls.get(index));
+			testHarness.addControl(controls.get(index));
 		}
 	}
 }
