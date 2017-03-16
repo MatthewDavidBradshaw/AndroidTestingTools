@@ -20,6 +20,7 @@ public class ControlBinder {
 				View control;
 
 				try {
+					m.setAccessible(true);
 					control = (View) m.invoke(testHarness);
 				} catch (final IllegalAccessException e) {
 					throw new RuntimeException("The @Control annotation can only be applied " +
