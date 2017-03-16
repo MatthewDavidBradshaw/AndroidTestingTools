@@ -21,6 +21,19 @@ public class ControlBinder {
 
 				try {
 					m.setAccessible(true);
+
+					final Object result = m.invoke(testHarness);
+
+					if (result == null) {
+						throw new RuntimeException("A method annotated with @Control returned " +
+								"null.");
+					}
+
+					if (!(result instanceof View)) {
+						throw new RuntimeException("A method annotated with @Control returned a " +
+								"object which is not a View.");
+					}
+
 					control = (View) m.invoke(testHarness);
 				} catch (final IllegalAccessException e) {
 					throw new RuntimeException("Unable to access a method annotated with " +
@@ -33,9 +46,6 @@ public class ControlBinder {
 							"@Control. The method must accept no arguments.", e);
 				}
 
-				if (control == null) {
-					throw new RuntimeException("A method annotated with @Control returned null.");
-				}
 
 				final Control annotation = m.getAnnotation(Control.class);
 				final int controlIndex = annotation.value();
