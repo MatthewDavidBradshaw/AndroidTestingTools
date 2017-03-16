@@ -59,7 +59,6 @@ public abstract class ControlsOverViewTestHarness<T>
 		testViewContainer = (FrameLayout) findViewById(controlsOverView_testViewContainer);
 
 		getTestViewContainer().addView((View) getTestView());
-		initialiseControlHiding();
 	}
 
 	@Override
@@ -75,24 +74,6 @@ public abstract class ControlsOverViewTestHarness<T>
 	@Override
 	public FrameLayout getTestViewContainer() {
 		return testViewContainer;
-	}
-
-	/**
-	 * Configures a button to hide/show the controls when clicked.
-	 */
-	private void initialiseControlHiding() {
-		final Button toggleControlVisibilityButton = (Button) findViewById(R.id
-				.controlsOverView_showHideControlsButton);
-		final LinearLayout controlButtonContainer = (LinearLayout) findViewById(R.id
-				.controlsOverView_controlsContainer);
-
-		toggleControlVisibilityButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				controlButtonContainer.setVisibility(controlButtonContainer.getVisibility() ==
-						VISIBLE ? GONE : VISIBLE);
-			}
-		});
 	}
 
 	@Override
