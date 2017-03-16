@@ -83,8 +83,13 @@ public class TestControlBinder {
 	}
 
 	@Test
-	public void testBindControls_annotationOnValidMethods() {
-		
+	public void testBindControls_annotationOnMultipleValidMethods() {
+
+	}
+
+	@Test
+	public void testBindControls_annotationOnSingleValidMethods() {
+
 	}
 
 	@Test
