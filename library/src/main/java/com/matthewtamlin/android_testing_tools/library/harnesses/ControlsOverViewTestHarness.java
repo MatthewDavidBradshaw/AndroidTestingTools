@@ -17,7 +17,6 @@
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -27,7 +26,10 @@ import com.matthewtamlin.android_testing_tools.library.R;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_hideShowControlsButton;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_innerControls;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_outerControls;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_root;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_testViewContainer;
 
 /**
  * A TestHarness which displays control buttons on top of the test view.
@@ -50,6 +52,12 @@ public abstract class ControlsOverViewTestHarness<T>
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsoverview);
+
+		rootView = (FrameLayout) findViewById(controlsOverView_root);
+		innerControlsContainer = (LinearLayout) findViewById(controlsOverView_innerControls);
+		outerControlsContainer = (LinearLayout) findViewById(controlsOverView_outerControls);
+		testViewContainer = (FrameLayout) findViewById(controlsOverView_testViewContainer);
+
 		getTestViewContainer().addView((View) getTestView());
 		initialiseControlHiding();
 	}
