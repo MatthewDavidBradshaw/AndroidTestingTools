@@ -20,7 +20,7 @@ import static org.mockito.Mockito.mock;
 @RunWith(JUnit4.class)
 public class TestControlBinder {
 	@Test(expected = IllegalArgumentException.class)
-	public void testBindControls_nullSupplied() {
+	public void testBindControls_nullTestHarnessSupplied() {
 		ControlBinder.bindControls(null);
 	}
 
