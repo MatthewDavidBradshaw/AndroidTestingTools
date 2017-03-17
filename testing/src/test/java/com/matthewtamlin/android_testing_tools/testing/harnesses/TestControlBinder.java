@@ -75,7 +75,7 @@ public class TestControlBinder {
 	}
 
 	@Test
-	public void testBindControls_annotationOnValidMethods() {
+	public void testBindControls_allAnnotatedMethodsAreValid() {
 		final View view1 = mock(View.class);
 		final View view2 = mock(View.class);
 		final View view3 = mock(View.class);
