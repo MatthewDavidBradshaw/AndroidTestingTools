@@ -126,6 +126,40 @@ public class TestControlBinder {
 	}
 
 	@Test
+	public void testBindControls_annotationOnMethodsWithMixedAccess() {
+		final View mockView = mock(View.class);
+
+		final StubTestHarness testHarness = new StubTestHarness() {
+			@Control(2)
+			public View someMethod2() {
+				return mockView;
+			}
+
+			@Control(1)
+			protected View someMethod1() {
+				return mock(View.class);
+			}
+
+			@Control(3)
+			private View someMethod3() {
+				return mock(View.class);
+			}
+
+			@Control(4)
+			View someMethod4() {
+				return mock(View.class);
+			}
+		};
+
+		ControlBinder.bindControls(testHarness);
+
+		final List<View> expectedViews = new ArrayList<>();
+		expectedViews.add(mockView);
+
+		assertThat(testHarness.getControls(), is(expectedViews));
+	}
+
+	@Test
 	public void testBindControls_noAnnotatedMethods() {
 		final StubTestHarness testHarness = new StubTestHarness();
 
