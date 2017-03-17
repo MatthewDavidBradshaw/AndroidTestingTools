@@ -160,6 +160,16 @@ public class TestControlBinder {
 	}
 
 	@Test
+	public void testBindControls_duplicateAnnotationValues() {
+
+	}
+
+	@Test
+	public void testBindControls_sameViewReturnedByMultipleMethods() {
+
+	}
+
+	@Test
 	public void testBindControls_noAnnotatedMethods() {
 		final StubTestHarness testHarness = new StubTestHarness();
 
