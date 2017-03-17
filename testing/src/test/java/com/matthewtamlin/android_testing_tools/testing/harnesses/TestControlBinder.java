@@ -24,7 +24,7 @@ public class TestControlBinder {
 		ControlBinder.bindControls(null);
 	}
 
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void testBindControls_annotationOnMethodWithNonViewReturn() {
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(1)
