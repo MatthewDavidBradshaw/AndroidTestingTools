@@ -26,7 +26,12 @@ public class TestControlBinder {
 
 	@Test
 	public void testBindControls_annotationOnMethodWithNonViewReturn() {
-		final StubTestHarness testHarness = new StubTestHarness();
+		final StubTestHarness testHarness = new StubTestHarness() {
+			@Control(1)
+			public Object someMethod() {
+				return new Object();
+			}
+		};
 
 		ControlBinder.bindControls(testHarness);
 
