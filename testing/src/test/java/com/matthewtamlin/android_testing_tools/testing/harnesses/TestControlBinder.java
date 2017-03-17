@@ -24,6 +24,15 @@ public class TestControlBinder {
 		ControlBinder.bindControls(null);
 	}
 
+	@Test
+	public void testBindControls_noAnnotatedMethods() {
+		final StubTestHarness testHarness = new StubTestHarness();
+
+		ControlBinder.bindControls(testHarness);
+
+		assertThat(testHarness.getControls(), is((List) new ArrayList<View>()));
+	}
+
 	@Test(expected = RuntimeException.class)
 	public void testBindControls_annotationOnMethodWithNonViewReturnType() {
 		final StubTestHarness testHarness = new StubTestHarness() {
@@ -198,14 +207,5 @@ public class TestControlBinder {
 		};
 
 		ControlBinder.bindControls(testHarness);
-	}
-
-	@Test
-	public void testBindControls_noAnnotatedMethods() {
-		final StubTestHarness testHarness = new StubTestHarness();
-
-		ControlBinder.bindControls(testHarness);
-
-		assertThat(testHarness.getControls(), is((List) new ArrayList<View>()));
 	}
 }
