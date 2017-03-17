@@ -38,7 +38,7 @@ public class TestControlBinder {
 		assertThat(testHarness.getControls(), is((List) new ArrayList<View>()));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = RuntimeException.class)
 	public void testBindControls_annotationOnMethodWithArguments() {
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(1)
