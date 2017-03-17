@@ -30,8 +30,8 @@ public class ControlBinder {
 					}
 
 					if (!(result instanceof View)) {
-						throw new RuntimeException("A method annotated with @Control returned a " +
-								"object which is not a View.");
+						throw new RuntimeException("@Control was applied to a method with a " +
+								"return type which is not assignable to android.view.View.");
 					}
 
 					control = (View) m.invoke(testHarness);
