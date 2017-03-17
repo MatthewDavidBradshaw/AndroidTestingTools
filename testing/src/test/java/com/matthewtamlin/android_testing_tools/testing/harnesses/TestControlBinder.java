@@ -70,7 +70,7 @@ public class TestControlBinder {
 	}
 
 	@Test
-	public void testBindControls_annotationOnMethodWithProtectedAccess() {
+	public void testBindControls_annotationOnValidMethods() {
 		final View view1 = mock(View.class);
 		final View view2 = mock(View.class);
 		final View view3 = mock(View.class);
