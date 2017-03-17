@@ -82,7 +82,7 @@ public class TestControlBinder {
 			}
 
 			@Control(1)
-			protected View someMethod1() {
+			public View someMethod1() {
 				return view1;
 			}
 
