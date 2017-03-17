@@ -159,9 +159,33 @@ public class TestControlBinder {
 		assertThat(testHarness.getControls(), is(expectedViews));
 	}
 
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void testBindControls_duplicateAnnotationValues() {
+		final View mockView = mock(View.class);
 
+		final StubTestHarness testHarness = new StubTestHarness() {
+			@Control(1)
+			public View someMethod2() {
+				return mockView;
+			}
+
+			@Control(1)
+			protected View someMethod1() {
+				return mock(View.class);
+			}
+
+			@Control(3)
+			private View someMethod3() {
+				return mock(View.class);
+			}
+
+			@Control(4)
+			View someMethod4() {
+				return mock(View.class);
+			}
+		};
+
+		ControlBinder.bindControls(testHarness);
 	}
 
 	@Test
