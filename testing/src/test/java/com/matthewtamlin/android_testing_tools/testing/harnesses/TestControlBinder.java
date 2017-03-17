@@ -39,6 +39,18 @@ public class TestControlBinder {
 	}
 
 	@Test(expected = RuntimeException.class)
+	public void testBindControls_annotationOnMethodWhichReturnsNull() {
+		final StubTestHarness testHarness = new StubTestHarness() {
+			@Control(1)
+			public View someMethod() {
+				return null;
+			}
+		};
+
+		ControlBinder.bindControls(testHarness);
+	}
+
+	@Test(expected = RuntimeException.class)
 	public void testBindControls_annotationOnMethodWithArguments() {
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(1)
