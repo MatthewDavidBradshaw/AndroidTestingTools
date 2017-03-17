@@ -108,7 +108,7 @@ public class TestControlBinder {
 	}
 
 	@Test
-	public void testBindControls_noAnnotations() {
+	public void testBindControls_noAnnotatedMethods() {
 		final StubTestHarness testHarness = new StubTestHarness();
 
 		ControlBinder.bindControls(testHarness);
