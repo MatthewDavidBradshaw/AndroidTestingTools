@@ -46,7 +46,7 @@ public class TestControlBinder {
 		ControlBinder.bindControls(testHarness);
 	}
 
-	@Test(expected = IllegalAccessException.class)
+	@Test
 	public void testBindControls_annotationOnMethodWithProtectedAccess() {
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(1)
