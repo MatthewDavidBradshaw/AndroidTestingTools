@@ -93,14 +93,14 @@ public class TestControlBinder {
 	}
 
 	@Test
-	public void testBindControls_allAnnotatedMethodsAreValid() {
+	public void testBindControls_annotationOnMethodWithPublicAccess() {
 		final View view1 = mock(View.class);
 		final View view2 = mock(View.class);
 		final View view3 = mock(View.class);
 
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(2)
-			protected View someMethod2() {
+			public View someMethod2() {
 				return view2;
 			}
 
@@ -110,7 +110,7 @@ public class TestControlBinder {
 			}
 
 			@Control(3)
-			protected View someMethod3() {
+			public View someMethod3() {
 				return view3;
 			}
 		};
