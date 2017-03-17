@@ -4,7 +4,6 @@ import android.view.View;
 
 import com.matthewtamlin.android_testing_tools.library.harnesses.Control;
 import com.matthewtamlin.android_testing_tools.library.harnesses.ControlBinder;
-import com.matthewtamlin.android_testing_tools.testing.harnesses.stubs.StubTestHarness;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +21,15 @@ public class TestControlBinder {
 	@Test(expected = IllegalArgumentException.class)
 	public void testBindControls_nullTestHarnessSupplied() {
 		ControlBinder.bindControls(null);
+	}
+
+	@Test
+	public void testBindControls_noAnnotatedMethods() {
+		final StubTestHarness testHarness = new StubTestHarness();
+
+		ControlBinder.bindControls(testHarness);
+
+		assertThat(testHarness.getControls(), is((List) new ArrayList<View>()));
 	}
 
 	@Test(expected = RuntimeException.class)
@@ -198,14 +206,5 @@ public class TestControlBinder {
 		};
 
 		ControlBinder.bindControls(testHarness);
-	}
-
-	@Test
-	public void testBindControls_noAnnotatedMethods() {
-		final StubTestHarness testHarness = new StubTestHarness();
-
-		ControlBinder.bindControls(testHarness);
-
-		assertThat(testHarness.getControls(), is((List) new ArrayList<View>()));
 	}
 }

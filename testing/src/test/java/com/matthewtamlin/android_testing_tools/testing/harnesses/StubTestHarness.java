@@ -1,4 +1,4 @@
-package com.matthewtamlin.android_testing_tools.testing.harnesses.stubs;
+package com.matthewtamlin.android_testing_tools.testing.harnesses;
 
 import android.view.View;
 
