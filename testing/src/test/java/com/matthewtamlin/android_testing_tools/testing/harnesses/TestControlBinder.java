@@ -79,6 +79,20 @@ public class TestControlBinder {
 	}
 
 	@Test
+	public void testBindControls_annotationOnMethodWithProtectedAccess() {
+		final StubTestHarness testHarness = new StubTestHarness() {
+			@Control(1)
+			protected View someMethod() {
+				return mock(View.class);
+			}
+		};
+
+		ControlBinder.bindControls(testHarness);
+
+		assertThat(testHarness.getControls(), is((List) new ArrayList<View>()));
+	}
+
+	@Test
 	public void testBindControls_allAnnotatedMethodsAreValid() {
 		final View view1 = mock(View.class);
 		final View view2 = mock(View.class);
