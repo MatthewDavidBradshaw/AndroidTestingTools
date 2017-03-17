@@ -39,6 +39,18 @@ public class TestControlBinder {
 	}
 
 	@Test(expected = RuntimeException.class)
+	public void testBindControls_annotationOnMethodWhichReturnsNull() {
+		final StubTestHarness testHarness = new StubTestHarness() {
+			@Control(1)
+			public View someMethod() {
+				return null;
+			}
+		};
+
+		ControlBinder.bindControls(testHarness);
+	}
+
+	@Test(expected = RuntimeException.class)
 	public void testBindControls_annotationOnMethodWithArguments() {
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(1)
@@ -159,14 +171,33 @@ public class TestControlBinder {
 		assertThat(testHarness.getControls(), is(expectedViews));
 	}
 
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void testBindControls_duplicateAnnotationValues() {
+		final View mockView = mock(View.class);
 
-	}
+		final StubTestHarness testHarness = new StubTestHarness() {
+			@Control(1)
+			public View someMethod2() {
+				return mockView;
+			}
 
-	@Test
-	public void testBindControls_sameViewReturnedByMultipleMethods() {
+			@Control(1)
+			public View someMethod1() {
+				return mock(View.class);
+			}
 
+			@Control(3)
+			public View someMethod3() {
+				return mock(View.class);
+			}
+
+			@Control(4)
+			public View someMethod4() {
+				return mock(View.class);
+			}
+		};
+
+		ControlBinder.bindControls(testHarness);
 	}
 
 	@Test
