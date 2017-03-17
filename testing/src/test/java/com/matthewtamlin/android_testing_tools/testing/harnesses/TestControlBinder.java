@@ -170,17 +170,17 @@ public class TestControlBinder {
 			}
 
 			@Control(1)
-			protected View someMethod1() {
+			public View someMethod1() {
 				return mock(View.class);
 			}
 
 			@Control(3)
-			private View someMethod3() {
+			public View someMethod3() {
 				return mock(View.class);
 			}
 
 			@Control(4)
-			View someMethod4() {
+			public View someMethod4() {
 				return mock(View.class);
 			}
 		};
