@@ -4,7 +4,6 @@ import android.view.View;
 
 import com.matthewtamlin.android_testing_tools.library.harnesses.Control;
 import com.matthewtamlin.android_testing_tools.library.harnesses.ControlBinder;
-import com.matthewtamlin.android_testing_tools.testing.harnesses.stubs.StubTestHarness;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
