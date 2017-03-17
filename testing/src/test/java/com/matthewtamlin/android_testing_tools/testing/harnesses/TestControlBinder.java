@@ -50,7 +50,7 @@ public class TestControlBinder {
 		ControlBinder.bindControls(testHarness);
 	}
 
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void testBindControls_annotationOnMethodWithDefaultAccess() {
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(1)
