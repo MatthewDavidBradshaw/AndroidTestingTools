@@ -46,18 +46,6 @@ public class TestControlBinder {
 	}
 
 	@Test
-	public void testBindControls_annotationOnMethodWithProtectedAccess() {
-		final StubTestHarness testHarness = new StubTestHarness() {
-			@Control(1)
-			protected View someMethod() {
-				return mock(View.class);
-			}
-		};
-
-		ControlBinder.bindControls(testHarness);
-	}
-
-	@Test
 	public void testBindControls_annotationOnMethodWithDefaultAccess() {
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(1)
@@ -74,6 +62,18 @@ public class TestControlBinder {
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(1)
 			private View someMethod() {
+				return mock(View.class);
+			}
+		};
+
+		ControlBinder.bindControls(testHarness);
+	}
+
+	@Test
+	public void testBindControls_annotationOnMethodWithProtectedAccess() {
+		final StubTestHarness testHarness = new StubTestHarness() {
+			@Control(1)
+			protected View someMethod() {
 				return mock(View.class);
 			}
 		};
