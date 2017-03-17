@@ -50,7 +50,7 @@ public class TestControlBinder {
 		ControlBinder.bindControls(testHarness);
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test
 	public void testBindControls_annotationOnMethodWithDefaultAccess() {
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(1)
@@ -60,9 +60,11 @@ public class TestControlBinder {
 		};
 
 		ControlBinder.bindControls(testHarness);
+
+		assertThat(testHarness.getControls(), is((List) new ArrayList<View>()));
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test
 	public void testBindControls_annotationOnMethodWithPrivateAccess() {
 		final StubTestHarness testHarness = new StubTestHarness() {
 			@Control(1)
@@ -72,6 +74,8 @@ public class TestControlBinder {
 		};
 
 		ControlBinder.bindControls(testHarness);
+
+		assertThat(testHarness.getControls(), is((List) new ArrayList<View>()));
 	}
 
 	@Test
