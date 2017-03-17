@@ -136,25 +136,6 @@ public class TestControlBinder {
 	}
 
 	@Test
-	public void testBindControls_annotationOnSingleValidMethods() {
-		final View view = mock(View.class);
-
-		final StubTestHarness testHarness = new StubTestHarness() {
-			@Control(1)
-			public View someMethod() {
-				return view;
-			}
-		};
-
-		ControlBinder.bindControls(testHarness);
-
-		final List<View> expectedViews = new ArrayList<>();
-		expectedViews.add(view);
-
-		assertThat(testHarness.getControls(), is(expectedViews));
-	}
-
-	@Test
 	public void testBindControls_noAnnotations() {
 		final StubTestHarness testHarness = new StubTestHarness();
 
