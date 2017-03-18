@@ -33,6 +33,11 @@ android {
 	lintOptions {
 		disable 'InvalidPackage'
 	}
+
+	// Allows espresso-core dependency to be used
+	lintOptions {
+		disable 'InvalidPackage'
+	}
 }
 
 dependencies {
