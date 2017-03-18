@@ -25,7 +25,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.matthewtamlin.android_testing_tools.library.espresso.EspressoHelper;
-import com.matthewtamlin.android_testing_tools.testing.EspressoHelperTestHarness;
+import com.matthewtamlin.android_testing_tools.testing.ThreeTextViewActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -47,8 +47,8 @@ public class TestEspressoHelper {
 	 * activity).
 	 */
 	@Rule
-	public ActivityTestRule<EspressoHelperTestHarness> rule = new ActivityTestRule<>(
-			EspressoHelperTestHarness.class);
+	public ActivityTestRule<ThreeTextViewActivity> rule = new ActivityTestRule<>(
+			ThreeTextViewActivity.class);
 
 	/**
 	 * Test to ensure that the {@link EspressoHelper#viewToViewInteraction(View)} method functions
@@ -57,11 +57,11 @@ public class TestEspressoHelper {
 	 */
 	@Test
 	public void testViewToViewInteraction_singleView() {
-		final EspressoHelperTestHarness activity = rule.getActivity();
+		final ThreeTextViewActivity activity = rule.getActivity();
 
 		final ViewInteraction tv1ViewInteraction = viewToViewInteraction(activity.getTextView1());
 
-		tv1ViewInteraction.check(hasText(EspressoHelperTestHarness.TEXT_1));
+		tv1ViewInteraction.check(hasText(ThreeTextViewActivity.TEXT_1));
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class TestEspressoHelper {
 	 */
 	@Test
 	public void testViewToViewInteraction_multipleViews() {
-		final EspressoHelperTestHarness activity = rule.getActivity();
+		final ThreeTextViewActivity activity = rule.getActivity();
 
 		final ViewInteraction tv1ViewInteraction = viewToViewInteraction(activity.getTextView1(),
 				"1");
@@ -81,9 +81,9 @@ public class TestEspressoHelper {
 		final ViewInteraction tv3ViewInteraction = viewToViewInteraction(activity.getTextView3(),
 				"3");
 
-		tv1ViewInteraction.check(hasText(EspressoHelperTestHarness.TEXT_1));
-		tv2ViewInteraction.check(matches(withText(EspressoHelperTestHarness.TEXT_2)));
-		tv3ViewInteraction.check(matches(withText(EspressoHelperTestHarness.TEXT_3)));
+		tv1ViewInteraction.check(hasText(ThreeTextViewActivity.TEXT_1));
+		tv2ViewInteraction.check(matches(withText(ThreeTextViewActivity.TEXT_2)));
+		tv3ViewInteraction.check(matches(withText(ThreeTextViewActivity.TEXT_3)));
 	}
 
 	/**

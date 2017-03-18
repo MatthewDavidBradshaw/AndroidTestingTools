@@ -32,7 +32,7 @@ import static android.widget.LinearLayout.VERTICAL;
  * This test harness presents no buttons for manually interacting with the view, and it intended to
  * be used with the espresso framework exclusively.
  */
-public class EspressoHelperTestHarness extends ControlsOverViewTestHarness {
+public class ThreeTextViewActivity extends ControlsOverViewTestHarness {
 	/**
 	 * The text displayed in the text view returned by {@link #getTextView1()}.
 	 */
