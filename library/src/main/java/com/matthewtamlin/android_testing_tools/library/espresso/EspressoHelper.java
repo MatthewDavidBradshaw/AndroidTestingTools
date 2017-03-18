@@ -32,7 +32,7 @@ import static org.hamcrest.Matchers.is;
 public class EspressoHelper {
 	/**
 	 * Creates a ViewInteractor for the supplied view. This method can only be used on a single view
-	 * in the view hierarchy. To get ViewInteractors for multiple views in the same hierarchy, use
+	 * in the view hierarchy. To get ViewInteractions for multiple views in the same hierarchy, use
 	 * {@link #viewToViewInteraction(View, String)} instead.
 	 *
 	 * @param view
