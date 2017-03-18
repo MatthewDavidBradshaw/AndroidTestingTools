@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
+import com.matthewtamlin.android_testing_tools.library.harnesses.Control;
 import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsOverViewTestHarness;
 
 /**
@@ -14,10 +15,8 @@ public class DemoTestHarness extends ControlsOverViewTestHarness<DemoCustomView>
 	private DemoCustomView testView;
 
 	@Override
-	protected void onCreate(final @Nullable Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		getInnerControlsContainer().addView(createControlButtonToSetText());
 	}
 
 	@Override
@@ -29,6 +28,7 @@ public class DemoTestHarness extends ControlsOverViewTestHarness<DemoCustomView>
 		return testView;
 	}
 
+	@Control(1)
 	private Button createControlButtonToSetText() {
 		final Button b = new Button(this);
 		b.setText("Set text \"Christmas\"");
