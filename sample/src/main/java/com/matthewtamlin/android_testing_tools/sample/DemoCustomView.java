@@ -20,9 +20,6 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-/**
- * Some custom view.
- */
 public class DemoCustomView extends View {
 	public DemoCustomView(final Context context) {
 		super(context);
