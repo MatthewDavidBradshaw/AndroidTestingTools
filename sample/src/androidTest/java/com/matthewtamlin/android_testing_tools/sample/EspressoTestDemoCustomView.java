@@ -16,6 +16,7 @@
 
 package com.matthewtamlin.android_testing_tools.sample;
 
+import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
@@ -23,6 +24,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.matthewtamlin.android_testing_tools.library.espresso.EspressoHelper;
 import com.matthewtamlin.android_testing_tools.library.espresso.TypeSafeViewAction;
+import com.matthewtamlin.android_testing_tools.library.espresso.TypeSafeViewAssertion;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -70,6 +72,16 @@ public class EspressoTestDemoCustomView {
 			@Override
 			public String getDescription() {
 				return "do something";
+			}
+		};
+	}
+
+	private static TypeSafeViewAssertion<DemoCustomView> checkSomething() {
+		return new TypeSafeViewAssertion<DemoCustomView>(DemoCustomView.class, true) {
+			@Override
+			public void typeSafeCheck(final DemoCustomView view,
+					final NoMatchingViewException noViewFoundException) {
+				// Do some check and throw an exception if the check fails
 			}
 		};
 	}
