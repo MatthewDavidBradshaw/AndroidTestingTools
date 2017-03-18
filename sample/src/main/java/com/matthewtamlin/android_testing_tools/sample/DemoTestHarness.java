@@ -17,7 +17,6 @@
 package com.matthewtamlin.android_testing_tools.sample;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
@@ -45,15 +44,15 @@ public class DemoTestHarness extends ControlsOverViewTestHarness<DemoCustomView>
 	}
 
 	@Control(1)
-	private Button createControlButtonToSetText() {
+	private Button doSomething() {
 		final Button b = new Button(this);
-		b.setText("Set text \"Christmas\"");
+		b.setText("Do something");
 		b.setAllCaps(false);
 
 		b.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(final View v) {
-				getTestView().setText("Christmas");
+				getTestView().doSomething();
 			}
 		});
 
