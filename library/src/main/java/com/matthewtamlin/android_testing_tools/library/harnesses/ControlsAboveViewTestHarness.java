@@ -76,6 +76,8 @@ public abstract class ControlsAboveViewTestHarness<T>
 				});
 
 		getTestViewContainer().addView((View) getTestView());
+
+		ControlBinder.bindControls(this);
 	}
 
 	@Override
