@@ -27,5 +27,6 @@ limitations under the License.
 
 		<activity android:name=".ThreeTextViewActivity"/>
 		<activity android:name=".StubControlsAboveViewTestHarness"/>
+		<activity android:name=".StubControlsBelowViewTestHarness"/>
 	</application>
 </manifest>
