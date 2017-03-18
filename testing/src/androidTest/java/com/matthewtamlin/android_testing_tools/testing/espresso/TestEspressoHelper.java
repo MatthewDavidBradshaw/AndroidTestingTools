@@ -38,7 +38,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Unit tests for the {@link EspressoHelper} class.
+ * Automated tests for the {@link EspressoHelper} class.
  */
 @RunWith(AndroidJUnit4.class)
 public class TestEspressoHelper {
