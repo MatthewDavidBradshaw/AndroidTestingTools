@@ -27,30 +27,15 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-/**
- * Unit test for the DemoCustomView using the DemoTestHarness.
- */
 @RunWith(AndroidJUnit4.class)
 public class EspressoTestDemoCustomView {
-	/**
-	 * Hosts the view being tested.
-	 */
 	@Rule
 	private ActivityTestRule<DemoTestHarness> rule = new ActivityTestRule<>(DemoTestHarness.class);
 
-	/**
-	 * The view being tested, as a direct View reference.
-	 */
 	private DemoCustomView testView;
 
-	/**
-	 * The view being tested, as an espresso ViewInteraction.
-	 */
 	private ViewInteraction testViewEspresso;
 
-	/**
-	 * Gets the references to the test view.
-	 */
 	@Before
 	public void setUp() {
 		testView = rule.getActivity().getTestView();
