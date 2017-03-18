@@ -3,7 +3,6 @@ package com.matthewtamlin.android_testing_tools.testing;
 import android.view.View;
 
 import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsAboveViewTestHarness;
-import static org.mockito.Mockito.mock;
 
 
 public class StubControlsAboveViewTestHarness extends ControlsAboveViewTestHarness<View> {
@@ -12,7 +11,7 @@ public class StubControlsAboveViewTestHarness extends ControlsAboveViewTestHarne
 	@Override
 	public View getTestView() {
 		if (testView == null) {
-			testView = mock(View.class);
+			testView = new View(this);
 		}
 
 		return testView;
