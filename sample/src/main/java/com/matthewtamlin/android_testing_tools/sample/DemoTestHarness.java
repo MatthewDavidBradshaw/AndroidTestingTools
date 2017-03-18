@@ -47,7 +47,6 @@ public class DemoTestHarness extends ControlsOverViewTestHarness<DemoCustomView>
 	private Button doSomething() {
 		final Button b = new Button(this);
 		b.setText("Do something");
-		b.setAllCaps(false);
 
 		b.setOnClickListener(new View.OnClickListener() {
 			@Override
