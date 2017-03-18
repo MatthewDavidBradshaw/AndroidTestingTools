@@ -5,7 +5,9 @@ import android.view.View;
 import com.matthewtamlin.android_testing_tools.library.harnesses.Control;
 import com.matthewtamlin.android_testing_tools.library.harnesses.EmptyTestHarness;
 
-
+/**
+ * An implementation of the ControlsAboveViewTestHarness for use in testing.
+ */
 public class StubEmptyTestHarness extends EmptyTestHarness {
 	public View controlView1;
 
