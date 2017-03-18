@@ -59,11 +59,6 @@ public class EspressoTestDemoCustomView {
 		// Test goes here
 	}
 
-	@Test
-	public void test_bar() {
-		// And here
-	}
-
 	private static TypeSafeViewAction<DemoCustomView> doSomething() {
 		return new TypeSafeViewAction<DemoCustomView>() {
 			@Override
