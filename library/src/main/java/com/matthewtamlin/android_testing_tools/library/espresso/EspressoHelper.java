@@ -27,21 +27,17 @@ import static com.matthewtamlin.java_utilities.checkers.NullChecker.checkNotNull
 import static org.hamcrest.Matchers.is;
 
 /**
- * Helper class for automated testing with Espresso. Two methods are defined: {@link
- * #viewToViewInteraction(View)} and {@link #viewToViewInteraction(View, String)}. The former can
- * only be used once per view hierarchy, however the latter can be used any number of times. The
- * only restriction is that the {@code uniqueTag} argument must be unique to the view hierarchy.
+ * Helper class for converting View objects to ViewInteraction objects.
  */
 public class EspressoHelper {
 	/**
-	 * Takes a View object and returns a ViewInteractor which allows the view to be used with the
-	 * Espresso framework. This method can only be used on a single view in the view hierarchy. To
-	 * get ViewInteractors for multiple views, use {@link #viewToViewInteraction(View, String)}
-	 * instead.
+	 * Creates a ViewInteractor for the supplied view. This method can only be used on a single view
+	 * in the view hierarchy. To get ViewInteractors for multiple views in the same hierarchy, use
+	 * {@link #viewToViewInteraction(View, String)} instead.
 	 *
 	 * @param view
 	 * 		the view to get a ViewInteractor for, not null
-	 * @return the ViewInteractor, not null
+	 * @return a ViewInteractor representing the supplied view, not null
 	 * @throws IllegalArgumentException
 	 * 		if {@code view} is null
 	 */
@@ -56,17 +52,14 @@ public class EspressoHelper {
 	}
 
 	/**
-	 * Takes a View object and returns a ViewInteractor which allows the view to be used with the
-	 * Espresso framework. This method must be used instead of {@link #viewToViewInteraction(View)}
-	 * if more than one view in the current view hierarchy is being converted. The value passed to
-	 * the {@code uniqueTag} parameter may be any value, so long as each value is unique in the
-	 * current view hierarchy.
+	 * Creates a ViewInteractor for the supplied view. This method can be used on multiple views
+	 * in the view hierarchy, so long as the {@code uniqueTag} argument is unique to each call.
 	 *
 	 * @param view
 	 * 		the view to get a ViewInteractor for, not null
 	 * @param uniqueTag
-	 * 		a value which is unique for the current view hierarchy
-	 * @return the ViewInteractor, not null
+	 * 		a value which is unique in the current view hierarchy
+	 * @return a ViewInteractor representing the supplied view, not null
 	 * @throws IllegalArgumentException
 	 * 		if {@code view} is null
 	 */

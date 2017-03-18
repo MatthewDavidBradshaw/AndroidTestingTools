@@ -4,6 +4,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsBelowViewTestHarness;
 import com.matthewtamlin.android_testing_tools.testing.StubControlsBelowViewTestHarness;
 
 import org.junit.Before;
@@ -26,6 +27,9 @@ import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelow
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * Automated tests for the {@link ControlsBelowViewTestHarness} class.
+ */
 public class TestControlsBelowViewTestHarness {
 	@Rule
 	public ActivityTestRule<StubControlsBelowViewTestHarness> rule =

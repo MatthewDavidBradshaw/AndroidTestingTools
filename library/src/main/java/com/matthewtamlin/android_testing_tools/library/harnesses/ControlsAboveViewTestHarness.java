@@ -30,14 +30,17 @@ import java.util.List;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_innerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_hideShowControlsButton;
+import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_innerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_outerControls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_root;
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_testViewContainer;
 
 /**
- * A TestHarness which displays control buttons above the test view.
+ * A TestHarness which displays control buttons above the test view. The controls are defined by
+ * annotating methods with {@link Control}. The annotation must only be applied to methods which
+ * are: <ul> <li>Public</li> <li>Have no arguments</li> <li>Return a View</li> <li>Never return
+ * null</li> </ul>
  *
  * @param <T>
  * 		the type of view being tested

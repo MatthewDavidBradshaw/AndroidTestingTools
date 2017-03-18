@@ -20,17 +20,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsOverViewTestHarness;
-import com.matthewtamlin.android_testing_tools.library.espresso.EspressoHelper;
 
 import static android.widget.LinearLayout.VERTICAL;
 
 /**
- * A test harness for testing the {@link EspressoHelper} class. The test harness displays three
- * TextViews, each with unique text. The text of each TextView can be accessed using the static
- * variables of the class.
- * <p>
- * This test harness presents no buttons for manually interacting with the view, and it intended to
- * be used with the espresso framework exclusively.
+ * A test harness which displays three TextViews in a LinearLayout.
  */
 public class ThreeTextViewActivity extends ControlsOverViewTestHarness {
 	/**
