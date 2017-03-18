@@ -38,7 +38,7 @@ public class StubControlsAboveViewTestHarness extends ControlsAboveViewTestHarne
 		if (controlView1 == null) {
 			controlView1 = new View(this);
 		}
-		
+
 		return controlView1;
 	}
 
