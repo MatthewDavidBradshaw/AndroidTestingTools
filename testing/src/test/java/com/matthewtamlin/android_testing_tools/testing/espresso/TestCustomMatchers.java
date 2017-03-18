@@ -79,7 +79,6 @@ public class TestCustomMatchers {
 	 */
 	@Test
 	public void testIsExactType_nullSupplied() {
-		final Matcher matcher = isExactType(Mammal.class);
 		assertThat("Should not match null.", mammalMatcher.matches(null), is(false));
 	}
 
