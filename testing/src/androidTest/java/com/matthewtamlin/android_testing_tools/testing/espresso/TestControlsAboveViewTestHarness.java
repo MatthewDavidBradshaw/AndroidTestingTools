@@ -60,18 +60,18 @@ public class TestControlsAboveViewTestHarness {
 	@Test
 	public void testGetInnerControlsContainer() {
 		final View expectedView = activity.findViewById(controlsAboveView_innerControls);
-		assertThat(activity.getRootView(), is(expectedView));
+		assertThat(activity.getInnerControlsContainer(), is(expectedView));
 	}
 
 	@Test
 	public void testGetOuterControlsContainer() {
 		final View expectedView = activity.findViewById(controlsAboveView_outerControls);
-		assertThat(activity.getRootView(), is(expectedView));
+		assertThat(activity.getOuterControlsContainer(), is(expectedView));
 	}
 
 	@Test
 	public void testGetTestViewContainer() {
 		final View expectedView = activity.findViewById(controlsAboveView_testViewContainer);
-		assertThat(activity.getRootView(), is(expectedView));
+		assertThat(activity.getTestViewContainer(), is(expectedView));
 	}
 }
