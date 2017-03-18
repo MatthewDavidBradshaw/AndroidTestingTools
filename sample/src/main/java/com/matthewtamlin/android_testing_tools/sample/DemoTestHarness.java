@@ -23,9 +23,6 @@ import android.widget.Button;
 import com.matthewtamlin.android_testing_tools.library.harnesses.Control;
 import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsOverViewTestHarness;
 
-/**
- * Displays a DemoCustomView and some control buttons.
- */
 public class DemoTestHarness extends ControlsOverViewTestHarness<DemoCustomView> {
 	private DemoCustomView testView;
 
