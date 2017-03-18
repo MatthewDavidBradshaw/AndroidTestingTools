@@ -10,8 +10,12 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.Visibility.GONE;
 import static android.support.test.espresso.matcher.ViewMatchers.Visibility.VISIBLE;
 import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -49,6 +53,13 @@ public class TestControlsAboveViewTestHarness {
 				.check(matches(withEffectiveVisibility(VISIBLE)));
 		onView(withId(controlsAboveView_innerControls))
 				.check(matches(withEffectiveVisibility(VISIBLE)));
+
+		// Check returned collection
+		final List<View> expectedControls = new ArrayList<>();
+		expectedControls.add(activity.controlView1);
+		expectedControls.add(activity.controlView2);
+		expectedControls.add(activity.controlView3);
+		assertThat(activity.getControls(), is(expectedControls));
 	}
 
 	@Test
@@ -60,18 +71,69 @@ public class TestControlsAboveViewTestHarness {
 	@Test
 	public void testGetInnerControlsContainer() {
 		final View expectedView = activity.findViewById(controlsAboveView_innerControls);
-		assertThat(activity.getRootView(), is(expectedView));
+		assertThat(activity.getInnerControlsContainer(), is(expectedView));
 	}
 
 	@Test
 	public void testGetOuterControlsContainer() {
 		final View expectedView = activity.findViewById(controlsAboveView_outerControls);
-		assertThat(activity.getRootView(), is(expectedView));
+		assertThat(activity.getOuterControlsContainer(), is(expectedView));
 	}
 
 	@Test
 	public void testGetTestViewContainer() {
 		final View expectedView = activity.findViewById(controlsAboveView_testViewContainer);
-		assertThat(activity.getRootView(), is(expectedView));
+		assertThat(activity.getTestViewContainer(), is(expectedView));
+	}
+
+	@Test
+	public void testEnableAndDisableControls() {
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				activity.enableControls(false);
+			}
+		});
+
+		onView(withId(controlsAboveView_outerControls))
+				.check(matches(withEffectiveVisibility(GONE)));
+		onView(withId(controlsAboveView_innerControls))
+				.check(matches(withEffectiveVisibility(GONE)));
+
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				activity.enableControls(true);
+			}
+		});
+
+		onView(withId(controlsAboveView_outerControls))
+				.check(matches(withEffectiveVisibility(VISIBLE)));
+		onView(withId(controlsAboveView_innerControls))
+				.check(matches(withEffectiveVisibility(VISIBLE)));
+
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				activity.enableControls(false);
+			}
+		});
+
+		onView(withId(controlsAboveView_outerControls))
+				.check(matches(withEffectiveVisibility(GONE)));
+		onView(withId(controlsAboveView_innerControls))
+				.check(matches(withEffectiveVisibility(GONE)));
+
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				activity.enableControls(true);
+			}
+		});
+
+		onView(withId(controlsAboveView_outerControls))
+				.check(matches(withEffectiveVisibility(VISIBLE)));
+		onView(withId(controlsAboveView_innerControls))
+				.check(matches(withEffectiveVisibility(VISIBLE)));
 	}
 }
