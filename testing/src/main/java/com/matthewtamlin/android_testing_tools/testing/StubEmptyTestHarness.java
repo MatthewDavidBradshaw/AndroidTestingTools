@@ -3,25 +3,15 @@ package com.matthewtamlin.android_testing_tools.testing;
 import android.view.View;
 
 import com.matthewtamlin.android_testing_tools.library.harnesses.Control;
-import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsAboveViewTestHarness;
+import com.matthewtamlin.android_testing_tools.library.harnesses.EmptyTestHarness;
 
-public class StubControlsAboveViewTestHarness extends ControlsAboveViewTestHarness<View> {
-	public View testView;
 
+public class StubEmptyTestHarness extends EmptyTestHarness {
 	public View controlView1;
 
 	public View controlView2;
 
 	public View controlView3;
-
-	@Override
-	public View getTestView() {
-		if (testView == null) {
-			testView = new View(this);
-		}
-
-		return testView;
-	}
 
 	@Control(3)
 	public View getControl3() {

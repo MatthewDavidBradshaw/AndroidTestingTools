@@ -3,9 +3,9 @@ package com.matthewtamlin.android_testing_tools.testing;
 import android.view.View;
 
 import com.matthewtamlin.android_testing_tools.library.harnesses.Control;
-import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsAboveViewTestHarness;
+import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsOverViewTestHarness;
 
-public class StubControlsAboveViewTestHarness extends ControlsAboveViewTestHarness<View> {
+public class StubControlsOverViewTestHarness extends ControlsOverViewTestHarness<View> {
 	public View testView;
 
 	public View controlView1;
