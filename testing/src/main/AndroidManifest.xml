@@ -26,5 +26,6 @@ limitations under the License.
 		android:theme="@style/Theme.AppCompat.Light">
 
 		<activity android:name=".ThreeTextViewActivity"/>
+		<activity android:name=".StubControlsAboveViewTestHarness"/>
 	</application>
 </manifest>
