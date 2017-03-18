@@ -6,7 +6,7 @@ import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsAboveVi
 
 
 public class StubControlsAboveViewTestHarness extends ControlsAboveViewTestHarness<View> {
-	private View testView;
+	public View testView;
 
 	@Override
 	public View getTestView() {
