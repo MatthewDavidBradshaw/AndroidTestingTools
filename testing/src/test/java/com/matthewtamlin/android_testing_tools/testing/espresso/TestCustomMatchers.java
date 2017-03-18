@@ -16,14 +16,13 @@
 
 package com.matthewtamlin.android_testing_tools.testing.espresso;
 
-import android.support.test.runner.AndroidJUnit4;
-
 import com.matthewtamlin.android_testing_tools.library.espresso.CustomMatchers;
 
 import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import static com.matthewtamlin.android_testing_tools.library.espresso.CustomMatchers.isExactType;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -32,7 +31,7 @@ import static org.hamcrest.core.Is.is;
 /**
  * Unit tests for the {@link CustomMatchers} class.
  */
-@RunWith(AndroidJUnit4.class)
+@RunWith(JUnit4.class)
 public class TestCustomMatchers {
 	/**
 	 * A matcher which should match with Mammals, excluding subclasses.
