@@ -7,6 +7,9 @@ import com.matthewtamlin.android_testing_tools.library.harnesses.TestHarness;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A stub implementation of the TestHarness interface for use in testing.
+ */
 public class StubTestHarness implements TestHarness {
 	private ArrayList<View> controls = new ArrayList<>();
 
