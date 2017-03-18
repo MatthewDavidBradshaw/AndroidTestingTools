@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.Visibility.GONE;
 import static android.support.test.espresso.matcher.ViewMatchers.Visibility.VISIBLE;
 import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -73,5 +74,56 @@ public class TestControlsAboveViewTestHarness {
 	public void testGetTestViewContainer() {
 		final View expectedView = activity.findViewById(controlsAboveView_testViewContainer);
 		assertThat(activity.getTestViewContainer(), is(expectedView));
+	}
+
+	@Test
+	public void testEnableAndDisableControls() {
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				activity.enableControls(false);
+			}
+		});
+
+		onView(withId(controlsAboveView_outerControls))
+				.check(matches(withEffectiveVisibility(GONE)));
+		onView(withId(controlsAboveView_innerControls))
+				.check(matches(withEffectiveVisibility(GONE)));
+
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				activity.enableControls(true);
+			}
+		});
+
+		onView(withId(controlsAboveView_outerControls))
+				.check(matches(withEffectiveVisibility(VISIBLE)));
+		onView(withId(controlsAboveView_innerControls))
+				.check(matches(withEffectiveVisibility(VISIBLE)));
+
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				activity.enableControls(false);
+			}
+		});
+		
+		onView(withId(controlsAboveView_outerControls))
+				.check(matches(withEffectiveVisibility(GONE)));
+		onView(withId(controlsAboveView_innerControls))
+				.check(matches(withEffectiveVisibility(GONE)));
+
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				activity.enableControls(true);
+			}
+		});
+
+		onView(withId(controlsAboveView_outerControls))
+				.check(matches(withEffectiveVisibility(VISIBLE)));
+		onView(withId(controlsAboveView_innerControls))
+				.check(matches(withEffectiveVisibility(VISIBLE)));
 	}
 }
