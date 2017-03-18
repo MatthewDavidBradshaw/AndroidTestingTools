@@ -54,7 +54,7 @@ public class TestControlsAboveViewTestHarness {
 		onView(withId(controlsAboveView_innerControls))
 				.check(matches(withEffectiveVisibility(VISIBLE)));
 
-		// Check returned collection
+		// Check returned controls collection
 		final List<View> expectedControls = new ArrayList<>();
 		expectedControls.add(activity.controlView1);
 		expectedControls.add(activity.controlView2);
