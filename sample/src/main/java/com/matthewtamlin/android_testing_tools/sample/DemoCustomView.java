@@ -17,13 +17,14 @@
 package com.matthewtamlin.android_testing_tools.sample;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.TextView;
 
 /**
  * A simple custom TextView subclass. This could easily be unit tested without using the UI, but for
  * the purposes of the demonstration we will overlook this.
  */
-public class DemoCustomView extends TextView {
+public class DemoCustomView extends View {
 	/**
 	 * Constructs a new DemoCustomView.
 	 *
