@@ -108,7 +108,7 @@ public class TestControlsAboveViewTestHarness {
 				activity.enableControls(false);
 			}
 		});
-		
+
 		onView(withId(controlsAboveView_outerControls))
 				.check(matches(withEffectiveVisibility(GONE)));
 		onView(withId(controlsAboveView_innerControls))
