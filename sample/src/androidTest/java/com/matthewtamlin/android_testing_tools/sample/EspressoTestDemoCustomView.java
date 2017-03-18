@@ -62,7 +62,7 @@ public class EspressoTestDemoCustomView {
 	}
 
 	private static TypeSafeViewAction<DemoCustomView> doSomething() {
-		return new TypeSafeViewAction<DemoCustomView>() {
+		return new TypeSafeViewAction<DemoCustomView>(DemoCustomView.class, true) {
 			@Override
 			public void typeSafePerform(final UiController uiController,
 					final DemoCustomView view) {
