@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.matthewtamlin.android_testing_tools.sample;
+package com.matthewtamlin.android_testing_tools.testing.espresso;
 
 import android.support.test.runner.AndroidJUnit4;
 
