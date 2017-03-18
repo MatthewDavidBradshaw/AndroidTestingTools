@@ -28,7 +28,7 @@ public class DemoCustomView extends View {
 		super(context);
 	}
 
-	public void someCustomMethod() {
+	public void doSomething() {
 		// Do something
 	}
 }
