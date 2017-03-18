@@ -57,8 +57,8 @@ public class EspressoTestDemoCustomView {
 	}
 
 	@Test
-	public void test_foo() {
-		// Test goes here
+	public void testDoSomething() {
+		testViewEspresso.perform(doSomething()).check(checkSomething());
 	}
 
 	private static TypeSafeViewAction<DemoCustomView> doSomething() {
