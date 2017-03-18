@@ -16,41 +16,30 @@
 
 package com.matthewtamlin.android_testing_tools.sample;
 
+import android.support.test.espresso.NoMatchingViewException;
+import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.matthewtamlin.android_testing_tools.library.espresso.EspressoHelper;
+import com.matthewtamlin.android_testing_tools.library.espresso.TypeSafeViewAction;
+import com.matthewtamlin.android_testing_tools.library.espresso.TypeSafeViewAssertion;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-/**
- * Unit test for the DemoCustomView using the DemoTestHarness.
- */
 @RunWith(AndroidJUnit4.class)
 public class EspressoTestDemoCustomView {
-	/**
-	 * Hosts the view being tested.
-	 */
 	@Rule
 	private ActivityTestRule<DemoTestHarness> rule = new ActivityTestRule<>(DemoTestHarness.class);
 
-	/**
-	 * The view being tested, as a direct View reference.
-	 */
 	private DemoCustomView testView;
 
-	/**
-	 * The view being tested, as an espresso ViewInteraction.
-	 */
 	private ViewInteraction testViewEspresso;
 
-	/**
-	 * Gets the references to the test view.
-	 */
 	@Before
 	public void setUp() {
 		testView = rule.getActivity().getTestView();
@@ -68,12 +57,32 @@ public class EspressoTestDemoCustomView {
 	}
 
 	@Test
-	public void test_foo() {
-		// Test goes here
+	public void testDoSomething() {
+		testViewEspresso.perform(doSomething()).check(checkSomething());
 	}
 
-	@Test
-	public void test_bar() {
-		// And here
+	private static TypeSafeViewAction<DemoCustomView> doSomething() {
+		return new TypeSafeViewAction<DemoCustomView>(DemoCustomView.class, true) {
+			@Override
+			public void typeSafePerform(final UiController uiController,
+					final DemoCustomView view) {
+				view.doSomething();
+			}
+
+			@Override
+			public String getDescription() {
+				return "do something";
+			}
+		};
+	}
+
+	private static TypeSafeViewAssertion<DemoCustomView> checkSomething() {
+		return new TypeSafeViewAssertion<DemoCustomView>(DemoCustomView.class, true) {
+			@Override
+			public void typeSafeCheck(final DemoCustomView view,
+					final NoMatchingViewException noViewFoundException) {
+				// Do some check and throw an exception if the check fails
+			}
+		};
 	}
 }
