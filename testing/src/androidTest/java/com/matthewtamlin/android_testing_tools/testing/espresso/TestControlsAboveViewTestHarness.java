@@ -10,6 +10,9 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.Visibility.GONE;
@@ -50,6 +53,13 @@ public class TestControlsAboveViewTestHarness {
 				.check(matches(withEffectiveVisibility(VISIBLE)));
 		onView(withId(controlsAboveView_innerControls))
 				.check(matches(withEffectiveVisibility(VISIBLE)));
+
+		// Check returned collection
+		final List<View> expectedControls = new ArrayList<>();
+		expectedControls.add(activity.controlView1);
+		expectedControls.add(activity.controlView2);
+		expectedControls.add(activity.controlView3);
+		assertThat(activity.getControls(), is(expectedControls));
 	}
 
 	@Test
