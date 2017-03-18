@@ -5,12 +5,11 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
 /**
- * Custom Hamcrest matchers. Matchers are created by calling the static methods.
+ * Custom Hamcrest matchers.
  */
 public class CustomMatchers {
 	/**
-	 * Creates a new matcher that matches objects which are an instance of the provided class.
-	 * Subclasses are explicitly excluded.
+	 * Creates a new matcher that matches with objects of the supplied type, excluding subclasses.
 	 *
 	 * @param type
 	 * 		the type to match with
