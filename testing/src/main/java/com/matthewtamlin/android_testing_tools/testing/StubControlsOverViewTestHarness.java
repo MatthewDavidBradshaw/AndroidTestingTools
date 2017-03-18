@@ -5,6 +5,9 @@ import android.view.View;
 import com.matthewtamlin.android_testing_tools.library.harnesses.Control;
 import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsOverViewTestHarness;
 
+/**
+ * An implementation of the ControlsOverViewTestHarness for use in testing.
+ */
 public class StubControlsOverViewTestHarness extends ControlsOverViewTestHarness<View> {
 	public View testView;
 
