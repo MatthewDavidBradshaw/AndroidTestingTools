@@ -6,7 +6,6 @@ import com.matthewtamlin.android_testing_tools.library.harnesses.Control;
 import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsAboveViewTestHarness;
 import com.matthewtamlin.android_testing_tools.library.harnesses.ControlsBelowViewTestHarness;
 
-
 public class StubControlsBelowViewTestHarness extends ControlsBelowViewTestHarness<View> {
 	public View testView;
 
