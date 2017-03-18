@@ -10,7 +10,7 @@ import java.util.TreeMap;
 import static com.matthewtamlin.java_utilities.checkers.NullChecker.checkNotNull;
 
 /**
- * Binds controls to a TestHarness.
+ * Binds controls to TestHarnesses by reading {@link Control} annotations.
  */
 public class ControlBinder {
 	/**
