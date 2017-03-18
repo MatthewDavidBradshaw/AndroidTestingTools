@@ -53,6 +53,11 @@ public class EspressoTestDemoCustomView {
 
 	@Test
 	public void test_foo() {
-		// Tests go here
+		// Test goes here
+	}
+
+	@Test
+	public void test_bar() {
+		// And here
 	}
 }
