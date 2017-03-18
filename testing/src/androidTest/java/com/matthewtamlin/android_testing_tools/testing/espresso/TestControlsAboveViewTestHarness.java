@@ -60,6 +60,9 @@ public class TestControlsAboveViewTestHarness {
 		expectedControls.add(activity.controlView2);
 		expectedControls.add(activity.controlView3);
 		assertThat(activity.getControls(), is(expectedControls));
+
+		// Check test view is displayed correctly
+		assertThat(activity.getTestViewContainer().getChildAt(0), is(activity.testView));
 	}
 
 	@Test
