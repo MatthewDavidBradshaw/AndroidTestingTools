@@ -16,6 +16,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.mock;
 
+/**
+ * Automated tests for the {@link ControlBinder} class.
+ */
 @RunWith(JUnit4.class)
 public class TestControlBinder {
 	@Test(expected = IllegalArgumentException.class)
