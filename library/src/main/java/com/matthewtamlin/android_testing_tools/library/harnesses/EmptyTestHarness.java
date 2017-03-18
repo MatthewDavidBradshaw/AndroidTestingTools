@@ -19,8 +19,7 @@ package com.matthewtamlin.android_testing_tools.library.harnesses;
 import android.view.View;
 
 /**
- * A TestHarness which displays no view. Useful when a real Activity is needed in testing, but no
- * view is required.
+ * A TestHarness which displays no view. The activity can still display controls to the user.
  */
 public class EmptyTestHarness extends ControlsOverViewTestHarness<View> {
 	@Override
