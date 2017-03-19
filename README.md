@@ -8,7 +8,8 @@ Releases are made available through jCentre. Add `compile 'com.matthew-tamlin:an
 This library contains the following tools:
 - Test Harnesses
 - EspressoHelper
-- TypeSafeViewAction and TypeSafeViewAssertion
+- TypeSafeViewAction
+- TypeSafeViewAssertion
 
 ### Test Harnesses
 A test harness is an activity which displays a view along with as a series of controls for interacting with the view. Test harnesses facilitate manual testing by allowing direct interaction with the view, and they allow automated testing by providing a target for espresso tests.
