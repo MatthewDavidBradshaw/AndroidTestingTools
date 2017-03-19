@@ -137,9 +137,6 @@ Here is an example of an automated test for the MyCustomView class.
 ```java
 @RunWith(AndroidJUnit4.class)
 public class TestMyCustomView {
-	/*
-	 * Disable the controls to avoid interfering with the expresso framework.
-	 */
 	@Rule
 	public final ActivityTestRule<MyCustomViewTestHarness> activityRule =
 		new ActivityTestRule<MyCustomViewTestHarness>(MyCustomViewTestHarness.class) {
@@ -150,7 +147,8 @@ public class TestMyCustomView {
 				getActivity().runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						getActivity().enableControls(false);
+                        // Disable controls to ensure tests run smoothly
+                        getActivity().enableControls(false);
 					}
 				});
 			}
