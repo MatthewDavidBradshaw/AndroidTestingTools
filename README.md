@@ -125,7 +125,7 @@ All of these tools can be combined to simplify unit testing of custom views. For
 @RunWith(AndroidJUnit4.class)
 public class TestMyCustomView {
 	/*
-	 * Launch the test harness and hide the controls to avoid interfering with the expresso framework.
+	 * Disable the controls to avoid interfering with the expresso framework.
 	 */
 	@Rule
 	public final ActivityTestRule<MyCustomViewTestHarness> activityRule =
