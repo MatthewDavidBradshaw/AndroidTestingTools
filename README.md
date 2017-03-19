@@ -131,19 +131,19 @@ public class TestMyCustomView {
 	 */
 	@Rule
 	public final ActivityTestRule<MyCustomViewTestHarness> activityRule =
-			new ActivityTestRule<MyCustomViewTestHarness>(MyCustomViewTestHarness.class) {
-				@Override
-				protected void afterActivityLaunched() {
-					super.afterActivityLaunched();
-
-					getActivity().runOnUiThread(new Runnable() {
-						@Override
-						public void run() {
-							getActivity().enableControls(false);
-						}
-					});
-				}
-			};
+		new ActivityTestRule<MyCustomViewTestHarness>(MyCustomViewTestHarness.class) {
+			@Override
+			protected void afterActivityLaunched() {
+				super.afterActivityLaunched();
+					
+				getActivity().runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						getActivity().enableControls(false);
+					}
+				});
+			}
+		};
 			
 	private MyCustomView testViewDirect;
 	
