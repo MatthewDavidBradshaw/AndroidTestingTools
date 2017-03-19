@@ -92,26 +92,28 @@ ViewInteraction ivInteraction = EspressoHelper.viewToViewInteraction(imageView, 
 ### TypeSafeViewAction and TypeSafeViewAssertion
 Usually writing custom espresso view actions and view assertions involves a considerable amount of type-checking boilerplate code. The TypeSafeViewAction and TypeSafeViewAssertion classes eliminate this annoyance. For example:
 ```java
-public static TypeSafeViewAction<MyCustomView> doSomething(final int someArgument) {
-	return new TypeSafeViewAction<MyCustomView>(MyCustomView.class, true) {
-		@Override
-		public void typeSafePerform(UiController uiController, MyCustomView view) {
-			// Your view actions here, for example:
-			view.doSomething(someArgument);
+public class MyCustomViewActionsAndAssertions {
+	public static TypeSafeViewAction<MyCustomView> doSomething(final int someArgument) {
+		return new TypeSafeViewAction<MyCustomView>(MyCustomView.class, true) {
+			@Override
+			public void typeSafePerform(UiController uiController, MyCustomView view) {
+				// Your view actions here, for example:
+				view.doSomething(someArgument);
+			}
+
+			@Override
+			public String getDescription() {
+				return "do something";
+			}
 		}
-		
-		@Override
-		public String getDescription() {
-			return "do something";
-		}
-	}
-	
-public static TypeSafeViewAssertion<MyCustomView> checkSomething(final int expectedValue) {
-	return new TypeSafeViewAssertion<MyCustomView>(MyCustomView.class, true) {
-		@Override
-		public void typeSafeCheck(TextView view, NoMatchingViewException exception) {
-			// Your view assertions here, for example:
-			assertThat(view.getSomething(), is(expectedValue));
+
+	public static TypeSafeViewAssertion<MyCustomView> checkSomething(final int expectedValue) {
+		return new TypeSafeViewAssertion<MyCustomView>(MyCustomView.class, true) {
+			@Override
+			public void typeSafeCheck(TextView view, NoMatchingViewException exception) {
+				// Your view assertions here, for example:
+				assertThat(view.getSomething(), is(expectedValue));
+			}
 		}
 	}
 }
