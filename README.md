@@ -150,7 +150,15 @@ public class TestMyCustomView {
 	@Before
 	public void setup() {
 		testViewDirect = activityRule.getTestView();
-		testViewEspress = EspressoHelper.viewToViewInteraction(testViewDirect);
+		testViewEspresso = EspressoHelper.viewToViewInteraction(testViewDirect);
+	}
+	
+	@Test
+	public void testSomething() {
+		testViewEspresso
+			.perform(MyCustomViewActionsAndAssertions.doSomething(100))
+			.check(MyCustomViewActionsAndAssertions.getSomething(100));
+		
 	}
 ```
 
