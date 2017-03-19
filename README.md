@@ -109,12 +109,12 @@ public class MyCustomViewActionsAndAssertions {
 			}
 		}
 
-	public static TypeSafeViewAssertion<MyCustomView> getSomething(final int expectedValue) {
+	public static TypeSafeViewAssertion<MyCustomView> matchesSomething(final int expected) {
 		return new TypeSafeViewAssertion<MyCustomView>(MyCustomView.class, true) {
 			@Override
 			public void typeSafeCheck(TextView view, NoMatchingViewException exception) {
 				// Your view assertions here, for example:
-				assertThat(view.getSomething(), is(expectedValue));
+				assertThat(view.getSomething(), is(expected));
 			}
 		}
 	}
@@ -170,7 +170,7 @@ public class TestMyCustomView {
 	public void testSomething() {
 		testViewEspresso
 			.perform(MyCustomViewActionsAndAssertions.doSomething(100))
-			.check(MyCustomViewActionsAndAssertions.getSomething(100));
+			.check(MyCustomViewActionsAndAssertions.matchesSomething(100));
 		
 	}
 ```
