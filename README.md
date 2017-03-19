@@ -4,6 +4,14 @@ A library of tools to make Android testing easier.
 ## Download
 Releases are made available through jCentre. Add `compile 'com.matthew-tamlin:android-testing-tools:2.0.0'` to your gradle build file to use the latest version. Older versions are available in the [maven repo](https://bintray.com/matthewtamlin/maven/AndroidTestingTools).
 
+When this library is used as a dependency, Android lint will detect an InvalidPackage error. If test modules/source-sets are the only consumers of the dependency, the error can be safely suppressed by adding the following to the Android scope of the relevant gradle build file:
+
+```
+lintOptions {
+	disable 'InvalidPackage'
+}
+ ```
+
 ## Usage
 This library contains the following tools:
 - Test Harnesses
