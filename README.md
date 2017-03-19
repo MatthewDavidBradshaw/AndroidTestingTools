@@ -117,6 +117,41 @@ public static TypeSafeViewAssertion<MyCustomView> checkSomething(final int expec
 }
 ```
 
+### Putting it all together
+All of these tools can be combined to simplify unit testing of custom views. For example:
+```java
+@RunWith(AndroidJUnit4.class)
+public class TestMyCustomView {
+	/*
+	 * Launch the test harness and hide the controls to avoid interfering with the expresso framework.
+	 */
+	@Rule
+	public final ActivityTestRule<MyCustomViewTestHarness> activityRule =
+			new ActivityTestRule<MyCustomViewTestHarness>(MyCustomViewTestHarness.class) {
+				@Override
+				protected void afterActivityLaunched() {
+					super.afterActivityLaunched();
+
+					getActivity().runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							getActivity().enableControls(false);
+						}
+					});
+				}
+			};
+			
+	private MyCustomView testViewDirect;
+	
+	private ViewInteraction testViewEspress;
+	
+	@Before
+	public void setup() {
+		testViewDirect = activityRule.getTestView();
+		testViewEspress = EspressoHelper.viewToViewInteraction(testViewDirect);
+	}
+```
+
 ## Compatibility
 This library is compatible with Android 12 and up. Android lint may warn about an InvalidPackage exception, however that shouldn't matter if the library is only used in testing. The warning can be suppressed by adding the following to the android scope in the relevant build.gradle file:
 ```
