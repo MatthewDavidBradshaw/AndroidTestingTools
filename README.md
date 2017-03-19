@@ -20,7 +20,7 @@ A test harness can be created in three steps:
 
 For example:
 ```java
-public class MyTestHarness extends ControlsAboveViewTestHarness<MyCustomView> {
+public class MyCustomViewTestHarness extends ControlsAboveViewTestHarness<MyCustomView> {
 	private MyCustomView testView;
 	
 	@Override
