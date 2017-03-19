@@ -71,7 +71,7 @@ Four test harness classes are provided:
 - EmptyTestHarness: Displays controls but no test view. Useful when an activity is needed in an automated test.
 
 ### EspressoHelper
-The espresso helper class converts View objects to ViewInteractor objects. ViewInteration objects are necessary for espresso tests, since view actions and view assertions cannot be applied directly to views.
+The EspressoHelper class converts View objects to ViewInteractor objects. ViewInteration objects are necessary for espresso tests, since view actions and view assertions cannot be applied directly to views. 
 When converting only a single view:
 ```java
 TextView textView = context.findViewById(R.id.my_text_view);
