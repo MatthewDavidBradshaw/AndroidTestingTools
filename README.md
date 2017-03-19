@@ -19,7 +19,7 @@ A test harness can be created in three steps:
 2. Define the test view by implementing getTestView().
 3. Define the controls by annotating methods with @Control.
 
-For example:
+The example below displays a MyCustomView along with two buttons in a ControlsAboveViewTestHarness:
 ```java
 public class MyCustomViewTestHarness extends ControlsAboveViewTestHarness<MyCustomView> {
 	private MyCustomView testView;
@@ -65,14 +65,15 @@ public class MyCustomViewTestHarness extends ControlsAboveViewTestHarness<MyCust
 }
 ```
 
-Four test harness classes are provided:
+Four test harnesses are provided in this library:
 - ControlsAboveViewTestHarness: The controls are positioned vertically above the test view.
 - ControlsBelowViewTestHarness: The controls are positioned vertically below the test view.
 - ControlsOverViewTestHarness: The controls are stacked on top of the test view.
 - EmptyTestHarness: Displays controls but no test view. Useful when an activity is needed in an automated test.
 
 ### EspressoHelper
-The EspressoHelper class converts View objects to ViewInteraction objects. ViewInteration objects are necessary for espresso tests, since view actions and view assertions cannot be applied directly to views. 
+The EspressoHelper class converts View objects to ViewInteraction objects. ViewInteration objects are necessary for espresso tests, since ViewActions and ViewAssertions cannot be applied to views directly. 
+
 When converting only a single view:
 ```java
 TextView textView = context.findViewById(R.id.my_text_view);
