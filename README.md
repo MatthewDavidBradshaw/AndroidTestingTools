@@ -6,17 +6,17 @@ Releases are made available through jCentre. Add `compile 'com.matthew-tamlin:an
 
 ## Usage
 This library contains the following tools:
-- TestHarness (and its subclasses)
+- Test Harnesses
 - EspressoHelper
 - TypeSafeViewAction and TypeSafeViewAssertion
 
-### TestHarness
+### Test Harnesses
 A test harness is an activity which displays a view along with as a series of controls for interacting with the view. Test harnesses facilitate manual testing by allowing direct interaction with the view, and they allow automated testing by providing a target for espresso tests.
 
 A test harness can be created in three steps:
 1. Subclass one of the provided test harnesses.
-2. Define the test view by overriding getTestView().
-3. Define the controls by annotation methods with @Control.
+2. Define the test view by implementing getTestView().
+3. Define the controls by annotating methods with @Control.
 
 For example:
 ```java
@@ -71,7 +71,7 @@ Four test harness classes are provided:
 - EmptyTestHarness: Displays controls but no test view. Useful when an activity is needed in an automated test.
 
 ### EspressoHelper
-The EspressoHelper class converts View objects to ViewInteractor objects. ViewInteration objects are necessary for espresso tests, since view actions and view assertions cannot be applied directly to views. 
+The EspressoHelper class converts View objects to ViewInteraction objects. ViewInteration objects are necessary for espresso tests, since view actions and view assertions cannot be applied directly to views. 
 When converting only a single view:
 ```java
 TextView textView = context.findViewById(R.id.my_text_view);
