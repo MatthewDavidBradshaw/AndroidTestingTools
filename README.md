@@ -1,5 +1,5 @@
 # AndroidTestingTools
-A library of tools to make Android testing easier, with a focus on testing custom views. 
+A library of tools to make Android testing easier. 
 
 ## Download
 Releases are made available through jCentre. Add `compile 'com.matthew-tamlin:android-testing-tools:2.0.0'` to your gradle build file to use the latest version. Older versions are available in the [maven repo](https://bintray.com/matthewtamlin/maven/AndroidTestingTools).
