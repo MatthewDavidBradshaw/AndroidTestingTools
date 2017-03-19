@@ -176,9 +176,4 @@ public class TestMyCustomView {
 ```
 
 ## Compatibility
-This library is compatible with Android 12 and up. Android lint may warn about an InvalidPackage exception, however that shouldn't matter if the library is only used in testing. The warning can be suppressed by adding the following to the android scope in the relevant build.gradle file:
-```
-lintOptions {
-	disable 'InvalidPackage'
-}
- ```
+This library is compatible with Android 12 and up.
