@@ -122,7 +122,16 @@ public class MyCustomViewActionsAndAssertions {
 ```
 
 ### Putting it all together
-All of these tools can be combined to simplify unit testing of custom views. For example:
+All of these tools can be combined to simplify automated testing of custom views. The steps to create an automated test using this library are:
+1. Create a custom view.
+2. Create a test harness for the custom view.
+3. Create custom view actions and view assertions (if the standard ones are not enough).
+4. Create an Android JUnit test class where the test harness is launched using an ActivityTestRule.
+5. Use the EspressoHelper to get a ViewInteractor for the custom view.
+6. Perform actions and assertions on the ViewInteraction.
+
+
+Here is an example of an automated test for the MyCustomView class.
 ```java
 @RunWith(AndroidJUnit4.class)
 public class TestMyCustomView {
