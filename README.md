@@ -153,9 +153,11 @@ public class TestMyCustomView {
 				});
 			}
 		};
-			
-	private MyCustomView testViewDirect;
 	
+	// Useful for verifying callback arguments	
+	private MyCustomView testViewDirect;
+
+	// Can be used with the expresso framework
 	private ViewInteraction testViewEspress;
 	
 	@Before
