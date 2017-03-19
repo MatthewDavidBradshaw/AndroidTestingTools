@@ -12,7 +12,7 @@ This library contains the following tools:
 - TypeSafeViewAssertion
 
 ### Test Harnesses
-A test harness is an activity which displays a view along with as a series of controls for interacting with the view. Test harnesses facilitate manual testing by allowing direct interaction with the view, and they allow automated testing by providing a target for espresso tests.
+A test harness is an activity which displays a view along with as a series of controls for interacting with the view. Test harnesses facilitate manual testing by allowing direct interaction with the view, and they facilitate automated testing by providing a target for espresso tests.
 
 A test harness can be created in three steps:
 1. Subclass one of the provided test harnesses.
