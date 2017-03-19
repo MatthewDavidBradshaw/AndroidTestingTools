@@ -133,7 +133,7 @@ All of these tools can be combined to simplify automated testing of custom views
 6. Perform actions and assertions on the ViewInteraction.
 
 
-Here is an example of an automated test for the MyCustomView class.
+Here is an example of an automated test for the MyCustomView class:
 ```java
 @RunWith(AndroidJUnit4.class)
 public class TestMyCustomView {
