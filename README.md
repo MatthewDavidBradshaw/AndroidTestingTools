@@ -120,7 +120,7 @@ public class MyCustomViewActionsAndAssertions {
 	public static TypeSafeViewAssertion<MyCustomView> matchesSomething(final int expected) {
 		return new TypeSafeViewAssertion<MyCustomView>(MyCustomView.class, true) {
 			@Override
-			public void typeSafeCheck(TextView view, NoMatchingViewException exception) {
+			public void typeSafeCheck(MyCustomView view, NoMatchingViewException exception) {
 				// Your view assertions here, for example:
 				assertThat(view.getSomething(), is(expected));
 			}
