@@ -12,7 +12,7 @@ lintOptions {
 }
  ```
 
-## Usage
+## Tools
 This library contains the following tools:
 - Test Harnesses
 - EspressoHelper
@@ -131,7 +131,7 @@ public class MyCustomViewActionsAndAssertions {
 
 The compiler will not fail if a type safe action or assertion is used on an object with an invalid type, however runtime checks will automatically throw descriptive exceptions.
 
-### Putting it all together
+## Putting it all together
 When used together, the tools in this library greatly simplify the process of testing custom views. To create an automated test suite for a custom view:
 1. Create a test harness for the custom view.
 2. Create view actions and view assertions (if the standard ones are not enough).
