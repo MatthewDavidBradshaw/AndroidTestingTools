@@ -82,13 +82,13 @@ Four test harnesses are provided in this library:
 ### EspressoHelper
 The EspressoHelper class converts View objects to ViewInteraction objects. ViewInteration objects are necessary for espresso tests, since ViewActions and ViewAssertions cannot be applied to views directly. 
 
-When converting only a single view, the viewToViewInteraction(View) method can be used, for example:
+When converting only a single view, the viewToViewInteraction(View) method can be used.
 ```java
 TextView textView = context.findViewById(R.id.my_text_view);
 ViewInteraction interaction = EspressoHelper.viewToViewInteraction(textView);
 ```
 
-When converting multiple views, the viewToViewInteraction(View, String) method must be used, for example:
+When converting multiple views, the viewToViewInteraction(View, String) method must be used.
 ```
 TextView tv1 = context.findViewById(R.id.my_text_view_1);
 TextView tv2 = context.findViewById(R.id.my_text_view_2);
