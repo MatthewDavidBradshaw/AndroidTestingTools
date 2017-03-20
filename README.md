@@ -132,14 +132,11 @@ public class MyCustomViewActionsAndAssertions {
 The compiler will not fail if a type safe action or assertion is used on an object with an invalid type, however runtime checks will automatically throw descriptive exceptions.
 
 ### Putting it all together
-All of these tools can be combined to simplify automated testing of custom views. The steps to create an automated test using this library are:
-1. Create a custom view.
-2. Create a test harness for the custom view.
-3. Create custom view actions and view assertions (if the standard ones are not enough).
-4. Create an Android JUnit test class where the test harness is launched using an ActivityTestRule.
-5. Use the EspressoHelper to get a ViewInteractor for the custom view.
-6. Perform actions and assertions on the ViewInteraction.
-
+When used together, the tools in this library greatly simplify the process of testing custom views. To create an automated test suite for a custom view:
+1. Create a test harness for the custom view.
+2. Create view actions and view assertions (if the standard ones are not enough).
+3. Create an Android JUnit test class where the test harness is launched using an ActivityTestRule.
+4. Write the test cases.
 
 Here is an example of an automated test for the MyCustomView class:
 ```java
