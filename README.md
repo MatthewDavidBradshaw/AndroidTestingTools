@@ -6,7 +6,7 @@ Releases are made available through jCentre. Add `compile 'com.matthew-tamlin:an
 
 When this library is used as a dependency, Android lint will detect an InvalidPackage error. If test modules/source-sets are the only consumers of the dependency, the error can be safely suppressed by adding the following to the Android scope of the relevant gradle build file:
 
-```
+```groovy
 lintOptions {
 	disable 'InvalidPackage'
 }
