@@ -27,7 +27,7 @@ A test harness can be created in three steps:
 2. Define the test view by implementing getTestView().
 3. Define the controls by annotating methods with @Control.
 
-The example below displays a MyCustomView along with two buttons in a ControlsAboveViewTestHarness:
+The example below uses a ControlsAboveViewTestHarness to display a MyCustomView and two control buttons:
 ```java
 public class MyCustomViewTestHarness extends ControlsAboveViewTestHarness<MyCustomView> {
 	private MyCustomView testView;
