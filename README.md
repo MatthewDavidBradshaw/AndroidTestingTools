@@ -100,7 +100,7 @@ ViewInteraction ivInteraction = EspressoHelper.viewToViewInteraction(imageView, 
 ```
 
 ### TypeSafeViewAction and TypeSafeViewAssertion
-Usually writing custom espresso view actions and view assertions involves a considerable amount of type-checking boilerplate code. The TypeSafeViewAction and TypeSafeViewAssertion classes eliminate this annoyance. Here are examples for the MyCustomView class used in an earlier example: 
+Usually writing custom espresso view actions and view assertions involves a considerable amount of type-checking and other boilerplate code. The TypeSafeViewAction and TypeSafeViewAssertion classes eliminate this annoyance. Here are examples for the MyCustomView class used in an earlier example: 
 ```java
 public class MyCustomViewActionsAndAssertions {
 	public static TypeSafeViewAction<MyCustomView> doSomething(final int someArgument) {
