@@ -35,3 +35,14 @@ allprojects {
 task clean(type: Delete) {
 	delete rootProject.buildDir
 }
+
+ext {
+	groupId = 'com.matthew-tamlin'
+	artifactId = 'android-testing-tools'
+	versionNumber = '2.0.0'
+}
+
+subprojects { project ->
+	group = rootProject.groupId
+	version = rootProject.versionNumber
+}
