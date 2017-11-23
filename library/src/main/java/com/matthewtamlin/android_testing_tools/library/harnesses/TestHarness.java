@@ -90,4 +90,12 @@ public interface TestHarness<T, C, R, I, O> {
 	 * @return the list, not null
 	 */
 	public List<View> getControls();
+
+	/**
+	 * Sets whether or not the view should be drawn behind the status bar.
+	 *
+	 * @param enable
+	 * 		true to allow drawing behind the status bar, false to disallow it
+	 */
+	public void drawBehindStatusBar(boolean enable);
 }

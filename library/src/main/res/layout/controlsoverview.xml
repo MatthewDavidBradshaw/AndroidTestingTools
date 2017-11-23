@@ -16,44 +16,53 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<FrameLayout
-	android:id="@+id/controlsOverView_root"
+<LinearLayout
+	android:id="@+id/root"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:fitsSystemWindows="false">
+	android:fitsSystemWindows="false"
+	android:orientation="vertical">
+
+	<View
+		android:id="@+id/status_bar_spacer"
+		android:layout_width="0dp"
+		android:layout_height="0dp"/>
 
 	<FrameLayout
-		android:id="@+id/controlsOverView_testViewContainer"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:fitsSystemWindows="true"/>
+		android:layout_height="match_parent">
 
-	<LinearLayout
-		android:id="@+id/controlsOverView_outerControls"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:fitsSystemWindows="true"
-		android:orientation="vertical">
+		<FrameLayout
+			android:id="@+id/test_view_container"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
 
-		<Button
-			android:id="@+id/controlsOverView_showHideControlsButton"
+		<LinearLayout
+			android:id="@+id/outer_controls"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:alpha="0.75"
-			android:text="Show/hide controls"
-			tools:ignore="HardcodedText"/>
+			android:orientation="vertical">
 
-		<ScrollView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content">
-
-			<LinearLayout
-				android:id="@+id/controlsOverView_innerControls"
+			<Button
+				android:id="@+id/toggle_controls_visibility_button"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:orientation="vertical"/>
-		</ScrollView>
-	</LinearLayout>
-</FrameLayout>
+				android:alpha="0.75"
+				android:text="Show/hide controls"
+				tools:ignore="HardcodedText"/>
+
+			<ScrollView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+
+				<LinearLayout
+					android:id="@+id/inner_controls"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"/>
+			</ScrollView>
+		</LinearLayout>
+	</FrameLayout>
+</LinearLayout>
