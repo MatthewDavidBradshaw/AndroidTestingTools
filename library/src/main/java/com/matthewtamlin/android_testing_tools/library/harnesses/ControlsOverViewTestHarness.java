@@ -87,7 +87,7 @@ public abstract class ControlsOverViewTestHarness<T>
 
 		drawBehindStatusBar(false);
 
-		getTestViewContainer().addView((View) getTestView());
+		getTestViewContainer().addView(coerceToView(getTestView()));
 
 		ControlBinder.bindControls(this);
 	}
@@ -110,6 +110,15 @@ public abstract class ControlsOverViewTestHarness<T>
 	@Override
 	public FrameLayout getTestViewContainer() {
 		return testViewContainer;
+	}
+
+	@Override
+	public View coerceToView(final T testView) {
+		try {
+			return (View) testView;
+		} catch (final ClassCastException e) {
+			throw new RuntimeException("The test view is not a View subclass. You must override coerceToView(T).");
+		}
 	}
 
 	@Override
