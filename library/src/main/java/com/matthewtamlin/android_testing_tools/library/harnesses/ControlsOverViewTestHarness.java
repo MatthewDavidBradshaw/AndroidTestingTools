@@ -47,6 +47,7 @@ import static com.matthewtamlin.android_testing_tools.library.R.id.toggle_contro
 public abstract class ControlsOverViewTestHarness<T>
 		extends AppCompatActivity
 		implements TestHarness<T, FrameLayout, LinearLayout, LinearLayout, LinearLayout> {
+
 	private final List<View> controls = new ArrayList<>();
 
 	private LinearLayout rootView;

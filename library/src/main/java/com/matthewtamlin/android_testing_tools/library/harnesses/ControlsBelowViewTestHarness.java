@@ -47,6 +47,7 @@ import static com.matthewtamlin.android_testing_tools.library.R.id.test_view_con
 public abstract class ControlsBelowViewTestHarness<T>
 		extends AppCompatActivity
 		implements TestHarness<T, FrameLayout, LinearLayout, LinearLayout, LinearLayout> {
+
 	private final List<View> controls = new ArrayList<>();
 
 	private LinearLayout rootView;
