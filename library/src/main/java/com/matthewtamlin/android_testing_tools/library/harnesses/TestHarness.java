@@ -32,8 +32,7 @@ import java.util.List;
  * @param <I>
  * 		the type of the view containing the controls
  * @param <O>
- * 		the type of the view containing the control container along with a button for hiding and
- * 		showing the	controls
+ * 		the type of the view containing the control container along with a button for hiding and showing the controls
  */
 public interface TestHarness<T, C, R, I, O> {
 	/**
@@ -47,8 +46,7 @@ public interface TestHarness<T, C, R, I, O> {
 	public I getInnerControlsContainer();
 
 	/**
-	 * @return the view containing the controls and the button for toggling the visibility of the
-	 * controls
+	 * @return the view containing the controls and the button for toggling the visibility of the controls
 	 */
 	public O getOuterControlsContainer();
 

@@ -37,10 +37,7 @@ import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAbove
 import static com.matthewtamlin.android_testing_tools.library.R.id.controlsAboveView_testViewContainer;
 
 /**
- * A TestHarness which displays control buttons above the test view. The controls are defined by
- * annotating methods with {@link Control}. The annotation must only be applied to methods which
- * are: <ul> <li>Public</li> <li>Have no arguments</li> <li>Return a View</li> <li>Never return
- * null</li> </ul>
+ * A test harness which displays the controls above the test view.
  *
  * @param <T>
  * 		the type of view being tested
