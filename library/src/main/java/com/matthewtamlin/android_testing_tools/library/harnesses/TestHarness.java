@@ -61,6 +61,17 @@ public interface TestHarness<T, C, R, I, O> {
 	public C getTestViewContainer();
 
 	/**
+	 * Supplies the test view in a form which can be added to a view hierarchy. Override this method if the declared
+	 * type of the test view does not explicitly extend the {@link View} class, but the runtime type does.
+	 *
+	 * @param testView
+	 * 		the view under test, not null
+	 *
+	 * @return the supplied test view, as a subclass of {@link View}, not null
+	 */
+	public View coerceToView(T testView);
+
+	/**
 	 * Entirely disables or enables the controls. The controls are not shown when disabled.
 	 *
 	 * @param enable
