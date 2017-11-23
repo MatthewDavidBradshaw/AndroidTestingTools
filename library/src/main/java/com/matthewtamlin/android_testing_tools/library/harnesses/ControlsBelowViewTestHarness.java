@@ -64,11 +64,11 @@ public abstract class ControlsBelowViewTestHarness<T>
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsbelowview);
 
-		rootView = (LinearLayout) findViewById(root);
+		rootView = findViewById(root);
 		statusBarSpacer = findViewById(R.id.status_bar_spacer);
-		innerControlsContainer = (LinearLayout) findViewById(inner_controls_container);
-		outerControlsContainer = (LinearLayout) findViewById(outer_controls_container);
-		testViewContainer = (FrameLayout) findViewById(test_view_container);
+		innerControlsContainer = findViewById(inner_controls_container);
+		outerControlsContainer = findViewById(outer_controls_container);
+		testViewContainer = findViewById(test_view_container);
 
 		findViewById(toggle_controls_visibility_button)
 				.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +113,7 @@ public abstract class ControlsBelowViewTestHarness<T>
 
 	@Override
 	public void enableControls(final boolean enable) {
-		final LinearLayout outerControlsContainer = (LinearLayout) findViewById(
+		final LinearLayout outerControlsContainer = findViewById(
 				outer_controls_container);
 
 		outerControlsContainer.setVisibility(enable ? VISIBLE : GONE);

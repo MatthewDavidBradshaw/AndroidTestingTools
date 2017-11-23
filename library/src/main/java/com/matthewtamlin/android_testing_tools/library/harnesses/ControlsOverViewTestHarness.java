@@ -35,8 +35,8 @@ import static android.view.View.VISIBLE;
 import static com.matthewtamlin.android_testing_tools.library.R.id.inner_controls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.outer_controls;
 import static com.matthewtamlin.android_testing_tools.library.R.id.root;
-import static com.matthewtamlin.android_testing_tools.library.R.id.toggle_controls_visibility_button;
 import static com.matthewtamlin.android_testing_tools.library.R.id.test_view_container;
+import static com.matthewtamlin.android_testing_tools.library.R.id.toggle_controls_visibility_button;
 
 /**
  * A test harness which displays the controls stacked on top of the test view.
@@ -64,11 +64,11 @@ public abstract class ControlsOverViewTestHarness<T>
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsoverview);
 
-		rootView = (LinearLayout) findViewById(root);
+		rootView = findViewById(root);
 		statusBarSpacer = findViewById(R.id.status_bar_spacer);
-		innerControlsContainer = (LinearLayout) findViewById(inner_controls);
-		outerControlsContainer = (LinearLayout) findViewById(outer_controls);
-		testViewContainer = (FrameLayout) findViewById(test_view_container);
+		innerControlsContainer = findViewById(inner_controls);
+		outerControlsContainer = findViewById(outer_controls);
+		testViewContainer = findViewById(test_view_container);
 
 		findViewById(toggle_controls_visibility_button)
 				.setOnClickListener(new View.OnClickListener() {
