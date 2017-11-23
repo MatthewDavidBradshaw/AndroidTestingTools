@@ -17,14 +17,14 @@
 apply plugin: 'com.android.application'
 
 android {
-	compileSdkVersion 25
-	buildToolsVersion "25.0.2"
+	compileSdkVersion 26
+	buildToolsVersion '26.0.2'
 
 	defaultConfig {
 		applicationId "com.matthewtamlin.android_testing_tools.sample"
 
 		minSdkVersion 15
-		targetSdkVersion 25
+		targetSdkVersion 26
 
 		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 	}
@@ -36,6 +36,6 @@ android {
 }
 
 dependencies {
-	compile project(":library")
-	compile 'com.android.support:appcompat-v7:25.2.0'
+	implementation project(":library")
+	implementation 'com.android.support:appcompat-v7:26.1.0'
 }
