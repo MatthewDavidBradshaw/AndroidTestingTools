@@ -73,4 +73,9 @@ public class StubTestHarness implements TestHarness {
 	public List<View> getControls() {
 		return controls;
 	}
+
+	@Override
+	public void drawBehindStatusBar(final boolean enable) {
+
+	}
 }

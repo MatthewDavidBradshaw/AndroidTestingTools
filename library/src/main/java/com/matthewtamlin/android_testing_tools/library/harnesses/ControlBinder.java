@@ -26,21 +26,22 @@ import java.util.TreeMap;
 import static com.matthewtamlin.java_utilities.checkers.NullChecker.checkNotNull;
 
 /**
- * Binds controls to TestHarnesses by reading {@link Control} annotations.
+ * Binds controls to test harnesses. This class is bound by the restrictions of reflection and may not be able to
+ * bind all controls if test harnesses are subclassed.
  */
 public class ControlBinder {
 	/**
-	 * Looks for {@link Control} annotations in the supplied test harness and binds the controls
-	 * to the view. The annotation values determine the order of the controls.
+	 * Looks for {@link Control} annotated methods in the supplied test harness and binds the controls to the view.
 	 *
 	 * @param testHarness
 	 * 		the test harness to bind the controls to, not null
+	 *
 	 * @throws IllegalArgumentException
 	 * 		if {@code testHarness} is null
 	 * @throws RuntimeException
 	 * 		if a method annotated with @Control returns null
 	 * @throws RuntimeException
-	 * 		if a method annotated with @Control has a return type which is not View or a View subclass
+	 * 		if a method annotated with @Control has a return type which is not a view or a view subclass
 	 * @throws RuntimeException
 	 * 		if a method annotated with @Control cannot be accessed
 	 * @throws RuntimeException
@@ -48,7 +49,7 @@ public class ControlBinder {
 	 * @throws RuntimeException
 	 * 		if a method annotation with @Control throws an exception when invoked
 	 * @throws RuntimeException
-	 * 		if two or more @Control annotations have the same value
+	 * 		if two or more @Control annotations have the same order
 	 */
 	public static void bindControls(final TestHarness<?, ?, ?, ?, ?> testHarness) {
 		checkNotNull(testHarness, "testHarness cannot be null.");

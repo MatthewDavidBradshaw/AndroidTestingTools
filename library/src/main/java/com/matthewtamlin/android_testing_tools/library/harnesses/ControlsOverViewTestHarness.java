@@ -16,6 +16,8 @@
 
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -30,27 +32,27 @@ import java.util.List;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_innerControls;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_outerControls;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_root;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_showHideControlsButton;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsOverView_testViewContainer;
+import static com.matthewtamlin.android_testing_tools.library.R.id.inner_controls;
+import static com.matthewtamlin.android_testing_tools.library.R.id.outer_controls;
+import static com.matthewtamlin.android_testing_tools.library.R.id.root;
+import static com.matthewtamlin.android_testing_tools.library.R.id.test_view_container;
+import static com.matthewtamlin.android_testing_tools.library.R.id.toggle_controls_visibility_button;
 
 /**
- * A TestHarness which displays control buttons on top of the test view. The controls are defined by
- * annotating methods with {@link Control}. The annotation must only be applied to methods which
- * are: <ul> <li>Public</li> <li>Have no arguments</li> <li>Return a View</li> <li>Never return
- * null</li> </ul>
+ * A test harness which displays the controls stacked on top of the test view.
  *
  * @param <T>
  * 		the type of view being tested
  */
 public abstract class ControlsOverViewTestHarness<T>
 		extends AppCompatActivity
-		implements TestHarness<T, FrameLayout, FrameLayout, LinearLayout, LinearLayout> {
+		implements TestHarness<T, FrameLayout, LinearLayout, LinearLayout, LinearLayout> {
+
 	private final List<View> controls = new ArrayList<>();
 
-	private FrameLayout rootView;
+	private LinearLayout rootView;
+
+	private View statusBarSpacer;
 
 	private LinearLayout innerControlsContainer;
 
@@ -63,12 +65,13 @@ public abstract class ControlsOverViewTestHarness<T>
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsoverview);
 
-		rootView = (FrameLayout) findViewById(controlsOverView_root);
-		innerControlsContainer = (LinearLayout) findViewById(controlsOverView_innerControls);
-		outerControlsContainer = (LinearLayout) findViewById(controlsOverView_outerControls);
-		testViewContainer = (FrameLayout) findViewById(controlsOverView_testViewContainer);
+		rootView = findViewById(root);
+		statusBarSpacer = findViewById(R.id.status_bar_spacer);
+		innerControlsContainer = findViewById(inner_controls);
+		outerControlsContainer = findViewById(outer_controls);
+		testViewContainer = findViewById(test_view_container);
 
-		findViewById(controlsOverView_showHideControlsButton)
+		findViewById(toggle_controls_visibility_button)
 				.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(final View v) {
@@ -78,13 +81,19 @@ public abstract class ControlsOverViewTestHarness<T>
 					}
 				});
 
+		getWindow()
+				.getDecorView()
+				.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
+		drawBehindStatusBar(false);
+
 		getTestViewContainer().addView((View) getTestView());
 
 		ControlBinder.bindControls(this);
 	}
 
 	@Override
-	public FrameLayout getRootView() {
+	public LinearLayout getRootView() {
 		return rootView;
 	}
 
@@ -123,5 +132,15 @@ public abstract class ControlsOverViewTestHarness<T>
 	@Override
 	public List<View> getControls() {
 		return Collections.unmodifiableList(controls);
+	}
+
+	@Override
+	public void drawBehindStatusBar(final boolean enable) {
+		statusBarSpacer.getLayoutParams().height = enable ? 0 : StatusBarHeightHelper.getStatusBarHeight(this);
+		statusBarSpacer.invalidate();
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			getWindow().setStatusBarColor(enable ? Color.TRANSPARENT : Color.BLACK);
+		}
 	}
 }

@@ -32,8 +32,7 @@ import java.util.List;
  * @param <I>
  * 		the type of the view containing the controls
  * @param <O>
- * 		the type of the view containing the control container along with a button for hiding and
- * 		showing the	controls
+ * 		the type of the view containing the control container along with a button for hiding and showing the controls
  */
 public interface TestHarness<T, C, R, I, O> {
 	/**
@@ -47,8 +46,7 @@ public interface TestHarness<T, C, R, I, O> {
 	public I getInnerControlsContainer();
 
 	/**
-	 * @return the view containing the controls and the button for toggling the visibility of the
-	 * controls
+	 * @return the view containing the controls and the button for toggling the visibility of the controls
 	 */
 	public O getOuterControlsContainer();
 
@@ -92,4 +90,12 @@ public interface TestHarness<T, C, R, I, O> {
 	 * @return the list, not null
 	 */
 	public List<View> getControls();
+
+	/**
+	 * Sets whether or not the view should be drawn behind the status bar.
+	 *
+	 * @param enable
+	 * 		true to allow drawing behind the status bar, false to disallow it
+	 */
+	public void drawBehindStatusBar(boolean enable);
 }

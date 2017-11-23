@@ -16,6 +16,8 @@
 
 package com.matthewtamlin.android_testing_tools.library.harnesses;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -30,17 +32,14 @@ import java.util.List;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_hideShowControlsButton;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_innerControls;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_outerControls;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_root;
-import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelowView_testViewContainer;
+import static com.matthewtamlin.android_testing_tools.library.R.id.toggle_controls_visibility_button;
+import static com.matthewtamlin.android_testing_tools.library.R.id.inner_controls_container;
+import static com.matthewtamlin.android_testing_tools.library.R.id.outer_controls_container;
+import static com.matthewtamlin.android_testing_tools.library.R.id.root;
+import static com.matthewtamlin.android_testing_tools.library.R.id.test_view_container;
 
 /**
- * A TestHarness which displays control buttons below the test view. The controls are defined by
- * annotating methods with {@link Control}. The annotation must only be applied to methods which
- * are: <ul> <li>Public</li> <li>Have no arguments</li> <li>Return a View</li> <li>Never return
- * null</li> </ul>
+ * A test harness which displays the controls below the test view.
  *
  * @param <T>
  * 		the type of view being tested
@@ -48,9 +47,12 @@ import static com.matthewtamlin.android_testing_tools.library.R.id.controlsBelow
 public abstract class ControlsBelowViewTestHarness<T>
 		extends AppCompatActivity
 		implements TestHarness<T, FrameLayout, LinearLayout, LinearLayout, LinearLayout> {
+
 	private final List<View> controls = new ArrayList<>();
 
 	private LinearLayout rootView;
+
+	private View statusBarSpacer;
 
 	private LinearLayout innerControlsContainer;
 
@@ -63,12 +65,13 @@ public abstract class ControlsBelowViewTestHarness<T>
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.controlsbelowview);
 
-		rootView = (LinearLayout) findViewById(controlsBelowView_root);
-		innerControlsContainer = (LinearLayout) findViewById(controlsBelowView_innerControls);
-		outerControlsContainer = (LinearLayout) findViewById(controlsBelowView_outerControls);
-		testViewContainer = (FrameLayout) findViewById(controlsBelowView_testViewContainer);
+		rootView = findViewById(root);
+		statusBarSpacer = findViewById(R.id.status_bar_spacer);
+		innerControlsContainer = findViewById(inner_controls_container);
+		outerControlsContainer = findViewById(outer_controls_container);
+		testViewContainer = findViewById(test_view_container);
 
-		findViewById(controlsBelowView_hideShowControlsButton)
+		findViewById(toggle_controls_visibility_button)
 				.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(final View v) {
@@ -77,6 +80,12 @@ public abstract class ControlsBelowViewTestHarness<T>
 						innerControlsContainer.setVisibility(newVis);
 					}
 				});
+
+		getWindow()
+				.getDecorView()
+				.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
+		drawBehindStatusBar(false);
 
 		getTestViewContainer().addView((View) getTestView());
 
@@ -105,8 +114,8 @@ public abstract class ControlsBelowViewTestHarness<T>
 
 	@Override
 	public void enableControls(final boolean enable) {
-		final LinearLayout outerControlsContainer = (LinearLayout) findViewById(
-				controlsBelowView_outerControls);
+		final LinearLayout outerControlsContainer = findViewById(
+				outer_controls_container);
 
 		outerControlsContainer.setVisibility(enable ? VISIBLE : GONE);
 	}
@@ -126,5 +135,15 @@ public abstract class ControlsBelowViewTestHarness<T>
 	@Override
 	public List<View> getControls() {
 		return Collections.unmodifiableList(controls);
+	}
+
+	@Override
+	public void drawBehindStatusBar(final boolean enable) {
+		statusBarSpacer.getLayoutParams().height = enable ? 0 : StatusBarHeightHelper.getStatusBarHeight(this);
+		statusBarSpacer.invalidate();
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			getWindow().setStatusBarColor(enable ? Color.TRANSPARENT : Color.BLACK);
+		}
 	}
 }
