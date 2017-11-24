@@ -78,4 +78,9 @@ public class StubTestHarness implements TestHarness {
 	public void drawBehindStatusBar(final boolean enable) {
 
 	}
+
+	@Override
+	public View coerceToView(final Object testView) {
+		return (View) testView;
+	}
 }
