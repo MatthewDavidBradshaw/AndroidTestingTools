@@ -36,6 +36,8 @@ task clean(type: Delete) {
 	delete rootProject.buildDir
 }
 
+task buildRelease(dependsOn: ':library:buildRelease')
+
 ext {
 	groupId = 'com.matthew-tamlin'
 	artifactId = 'android-testing-tools'
