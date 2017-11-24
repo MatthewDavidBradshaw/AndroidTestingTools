@@ -39,7 +39,7 @@ task clean(type: Delete) {
 ext {
 	groupId = 'com.matthew-tamlin'
 	artifactId = 'android-testing-tools'
-	versionNumber = '2.0.0'
+	versionNumber = '3.0.0'
 }
 
 subprojects { project ->
