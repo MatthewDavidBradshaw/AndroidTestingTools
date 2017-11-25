@@ -1,16 +1,29 @@
 # AndroidTestingTools
 A library of tools to make Android testing easier. 
 
-## Download
-Releases are made available through jCentre. Add `compile 'com.matthew-tamlin:android-testing-tools:3.0.0'` to your gradle build file to use the latest version. Older versions are available in the [maven repo](https://bintray.com/matthewtamlin/maven/AndroidTestingTools).
-
-When this library is used as a dependency, Android lint will detect an InvalidPackage error. If test modules/source-sets are the only consumers of the dependency, the error can be safely suppressed by adding the following to the Android scope of the relevant gradle build file:
-
+## Dependency
+To use the framework, add the following to your gradle build file:
 ```groovy
-lintOptions {
-	disable 'InvalidPackage'
+repositories {
+	jcenter()
 }
- ```
+
+dependencies {
+	// For Android Gradle plugin 3.0.0+ projects:
+	implementation 'com.matthew-tamlin:android-utilities:5.1.2'
+
+	// For older projects:
+	compile 'com.matthew-tamlin:android-utilities:5.1.2'
+}
+
+android {
+	lintOptions {
+		disable 'InvalidPackage'
+	}
+}
+```
+
+Older versions are available in the [maven repo](https://bintray.com/matthewtamlin/maven/AndroidTestingTools).
 
 ## Tools
 This library contains the following tools:
@@ -182,11 +195,6 @@ public class TestMyCustomView {
 
 ## Licensing
 This library is licensed under the Apache v2.0 licence. Have a look at [the license](LICENSE) for details.
-
-## Dependencies and Attribution
-This library uses the following open source libraries as level 1 dependencies:
-- [Android Support Library](https://developer.android.com/topic/libraries/support-library/index.html), licensed under the Apache 2.0 license.
-- [Java Utilities](https://github.com/MatthewTamlin/JavaUtilities), licensed under the Apache 2.0 license.
 
 ## Compatibility
 This library is compatible with Android 16 and up.
