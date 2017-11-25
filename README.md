@@ -189,4 +189,4 @@ This library uses the following open source libraries as level 1 dependencies:
 - [Java Utilities](https://github.com/MatthewTamlin/JavaUtilities), licensed under the Apache 2.0 license.
 
 ## Compatibility
-This library is compatible with Android 12 and up.
+This library is compatible with Android 16 and up.
