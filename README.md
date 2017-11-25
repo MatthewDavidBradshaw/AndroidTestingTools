@@ -2,7 +2,7 @@
 A library of tools to make Android testing easier. 
 
 ## Dependency
-To use the framework, add the following to your gradle build file:
+To use the library, add the following to your gradle build file:
 ```groovy
 repositories {
 	jcenter()
