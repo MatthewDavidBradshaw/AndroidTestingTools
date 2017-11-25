@@ -42,7 +42,7 @@ dependencies {
 ext {
 	POM_ARTIFACT_ID_SUFFIX = ''
 	POM_NAME = 'AndroidTestingTools'
-	POM_PACKAGING = 'jar'
+	POM_PACKAGING = 'aar'
 	POM_DESCRIPTION = 'Tools to make Android UI testing easier.'
 }
 
