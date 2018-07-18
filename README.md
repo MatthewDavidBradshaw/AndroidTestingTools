@@ -5,17 +5,17 @@ A library of tools to make Android testing easier.
 To use the library, add the following to your gradle build file:
 ```groovy
 repositories {
-	jcenter()
+  jcenter()
 }
 
 dependencies {
-	implementation 'com.matthew-tamlin:android-testing-tools:3.0.1'
+  implementation 'com.matthew-tamlin:android-testing-tools:3.0.1'
 }
 
 android {
-	lintOptions {
-		disable 'InvalidPackage'
-	}
+  lintOptions {
+    disable 'InvalidPackage'
+  }
 }
 ```
 
@@ -39,46 +39,46 @@ A test harness can be created in three steps:
 The example below uses a ControlsAboveViewTestHarness to display a MyCustomView and two control buttons:
 ```java
 public class MyCustomViewTestHarness extends ControlsAboveViewTestHarness<MyCustomView> {
-	private MyCustomView testView;
+  private MyCustomView testView;
 	
-	@Override
-	public MyCustomView getTestView() {
-		if (testView == null) {
-			testView = new MyCustomView(this);
-		}
+  @Override
+  public MyCustomView getTestView() {
+    if (testView == null) {
+      testView = new MyCustomView(this);
+    }
 		
-		return testView();
-	}
+    return testView();
+  }
 	
-	@Control(1)
-	public Button doSomething() {
-		Button b = new Button(this);
-		b.setText("Do something");
+  @Control(1)
+  public Button doSomething() {
+    Button b = new Button(this);
+    b.setText("Do something");
 		
-		b.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				getTestView().doSomething();
-			}
-		});
+    b.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        getTestView().doSomething();
+      }
+    });
 		
-		return b;
-	}
+    return b;
+  }
 	
-	@Control(2)
-	public Button doSomethingElse() {
-		Button b = new Button(this);
-		b.setText("Do something else");
+  @Control(2)
+  public Button doSomethingElse() {
+    Button b = new Button(this);
+    b.setText("Do something else");
 		
-		b.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				getTestView().doSomethingElse();
-			}
-		});
+    b.setOnClickListener(new OnClickListener() {
+      @Override
+        public void onClick(View v) {
+          getTestView().doSomethingElse();
+        }
+      });
 		
-		return b;
-	}
+      return b;
+  }
 }
 ```
 
@@ -112,29 +112,29 @@ ViewInteraction ivInteraction = EspressoHelper.viewToViewInteraction(imageView, 
 Usually writing custom espresso view actions and view assertions involves a considerable amount of type-checking and other boilerplate code. The TypeSafeViewAction and TypeSafeViewAssertion classes eliminate this annoyance.
 ```java
 public class MyCustomViewActionsAndAssertions {
-	public static TypeSafeViewAction<MyCustomView> doSomething(final int someArgument) {
-		return new TypeSafeViewAction<MyCustomView>(MyCustomView.class, true) {
-			@Override
-			public void typeSafePerform(UiController uiController, MyCustomView view) {
-				// Your view actions here, for example:
-				view.doSomething(someArgument);
-			}
+  public static TypeSafeViewAction<MyCustomView> doSomething(final int someArgument) {
+    return new TypeSafeViewAction<MyCustomView>(MyCustomView.class, true) {
+      @Override
+      public void typeSafePerform(UiController uiController, MyCustomView view) {
+        // Your view actions here, for example:
+        view.doSomething(someArgument);
+      }
 
-			@Override
-			public String getDescription() {
-				return "do something";
-			}
-		}
+      @Override
+      public String getDescription() {
+        return "do something";
+      }
+   }
 
-	public static TypeSafeViewAssertion<MyCustomView> matchesSomething(final int expected) {
-		return new TypeSafeViewAssertion<MyCustomView>(MyCustomView.class, true) {
-			@Override
-			public void typeSafeCheck(MyCustomView view, NoMatchingViewException exception) {
-				// Your view assertions here, for example:
-				assertThat(view.getSomething(), is(expected));
-			}
-		}
-	}
+  public static TypeSafeViewAssertion<MyCustomView> matchesSomething(final int expected) {
+    return new TypeSafeViewAssertion<MyCustomView>(MyCustomView.class, true) {
+      @Override
+      public void typeSafeCheck(MyCustomView view, NoMatchingViewException exception) {
+        // Your view assertions here, for example:
+        assertThat(view.getSomething(), is(expected));
+      }
+    }
+  }
 }
 ```
 
@@ -151,46 +151,43 @@ Here is an example of an automated test for the MyCustomView class:
 ```java
 @RunWith(AndroidJUnit4.class)
 public class TestMyCustomView {
-	@Rule
-	public final ActivityTestRule<MyCustomViewTestHarness> activityRule =
-		new ActivityTestRule<MyCustomViewTestHarness>(MyCustomViewTestHarness.class) {
-			@Override
-			protected void afterActivityLaunched() {
-				super.afterActivityLaunched();
+  @Rule
+  public final ActivityTestRule<MyCustomViewTestHarness> activityRule =
+    new ActivityTestRule<MyCustomViewTestHarness>(MyCustomViewTestHarness.class) {
+      @Override
+      protected void afterActivityLaunched() {
+        super.afterActivityLaunched();
 					
-				getActivity().runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-                        // Disable controls to ensure tests run smoothly
-                        getActivity().enableControls(false);
-					}
-				});
-			}
-		};
+        getActivity().runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+            // Disable controls to ensure tests run smoothly
+            getActivity().enableControls(false);
+          }
+        });
+      }
+    };
 	
-	// Useful for verifying callback arguments	
-	private MyCustomView testViewDirect;
+  // Useful for verifying callback arguments	
+  private MyCustomView testViewDirect;
 
-	// Can be used with the expresso framework
-	private ViewInteraction testViewEspress;
+  // Can be used with the expresso framework
+  private ViewInteraction testViewEspress;
 	
-	@Before
-	public void setup() {
-		testViewDirect = activityRule.getTestView();
-		testViewEspresso = EspressoHelper.viewToViewInteraction(testViewDirect);
-	}
+  @Before
+  public void setup() {
+    testViewDirect = activityRule.getTestView();
+    testViewEspresso = EspressoHelper.viewToViewInteraction(testViewDirect);
+  }
 	
-	@Test
-	public void testSomething() {
-		testViewEspresso
-			.perform(MyCustomViewActionsAndAssertions.doSomething(100))
-			.check(MyCustomViewActionsAndAssertions.matchesSomething(100));
-		
-	}
+  @Test
+  public void testSomething() {
+    testViewEspresso
+        .perform(MyCustomViewActionsAndAssertions.doSomething(100))
+        .check(MyCustomViewActionsAndAssertions.matchesSomething(100));
+  }
+}
 ```
-
-## Licensing
-This library is licensed under the Apache v2.0 licence. Have a look at [the license](LICENSE) for details.
 
 ## Compatibility
 This library is compatible with Android 16 and up.
