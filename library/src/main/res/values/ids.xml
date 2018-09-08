@@ -17,5 +17,5 @@ limitations under the License.
 -->
 
 <resources>
-	<item name="espresso_util_conversion_tag" type="id">Espresso util conversion tag</item>
+	<item name="espresso_util_conversion_tag" type="id"/>
 </resources>

@@ -45,7 +45,7 @@ task buildRelease(dependsOn: ':library:buildRelease')
 ext {
 	groupId = 'com.matthew-tamlin'
 	artifactId = 'android-testing-tools'
-	versionNumber = '3.0.1'
+	versionNumber = '3.0.2'
 }
 
 subprojects { project ->
