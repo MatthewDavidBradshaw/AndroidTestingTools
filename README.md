@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.matthew-tamlin:android-testing-tools:3.0.1'
+  implementation 'com.matthew-tamlin:android-testing-tools:3.0.2'
 }
 
 android {
